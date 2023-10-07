@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Principal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="ruta/a/tu/logo.png"
+              alt="Logo de la página"
+              width="30"
+              height="30"
+              class="d-inline-block align-text-top"
+            />
+            <span class="fw-bold fs-4 text-primary">Pagina</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul
+              class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0"
+            >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                  <span class="fw-bold">Inicio</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="fw-bold">Página 1</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="fw-bold">Página 2</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span class="fw-bold">Página 3</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex">
+            <a
+              href="login.html"
+              class="btn btn-outline-primary me-2"
+              type="submit"
+            >
+              <span class="fw-bold">Iniciar sesión</span>
+            </a>
+            <a href="registro.html" class="btn btn-primary" type="submit">
+              <span class="fw-bold">Registrarse</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-md-3">
+            <section id="perfil">
+              <div class="card">
+                <img
+                  src="ruta/a/tu/foto-de-perfil.jpg"
+                  alt="Foto de perfil"
+                  class="card-img-top img-fluid rounded-circle"
+                />
+                <div class="card-body">
+                  <h2 class="card-title fw-bold">Nombre del usuario</h2>
+                  <p class="card-text lead">Descripción del usuario</p>
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="bi bi-envelope"></i> correo@electronico.com
+                    </li>
+                    <li><i class="bi bi-geo-alt"></i> Ciudad, País</li>
+                    <li>
+                      <i class="bi bi-linkedin"></i>
+                      <a
+                        href="https://www.linkedin.com/in/nombre-de-usuario/"
+                        target="_blank"
+                        >Perfil de LinkedIn</a
+                      >
+                    </li>
+                    <li>
+                      <i class="bi bi-twitter"></i>
+                      <a
+                        href="https://twitter.com/nombre-de-usuario/"
+                        target="_blank"
+                        >@nombre-de-usuario</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="col-md-6">
+            <section id="publicaciones">
+              <div class="d-flex justify-content-between mb-3">
+                <h2 class="fw-bold">Publicaciones</h2>
+                <button class="btn btn-primary">+</button>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Título de la publicación</h5>
+                  <p class="card-text">Contenido de la publicación</p>
+                  <p class="card-text">
+                    <small class="text-muted"
+                      >Publicado el 1 de enero de 2022</small
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Título de la publicación</h5>
+                  <p class="card-text">Contenido de la publicación</p>
+                  <p class="card-text">
+                    <small class="text-muted"
+                      >Publicado el 1 de enero de 2022</small
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- Agrega más tarjetas de publicaciones aquí -->
+            </section>
+          </div>
+          <div class="col-md-3">
+            <section id="amigos">
+              <!-- Aquí van los amigos del usuario -->
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre del amigo</h5>
+                  <p class="card-text">Descripción del amigo</p>
+                  <a href="#" class="btn btn-primary">Ver perfil</a>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre del amigo</h5>
+                  <p class="card-text">Descripción del amigo</p>
+                  <a href="#" class="btn btn-primary">Ver perfil</a>
+                </div>
+              </div>
+              <!-- Agrega más tarjetas de amigos aquí -->
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <!-- Aquí va el pie de página, con información de contacto y enlaces útiles -->
+    </footer>
+    <!-- Aquí van los enlaces a los archivos JavaScript -->
+  </body>
+</html>

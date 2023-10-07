@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="renamerInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="167dcc60-4db8-4923-85dc-13bc2cbb8fea__codekion" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/codekion/marketplace/Models/entity" />
+  </component>
+</project>

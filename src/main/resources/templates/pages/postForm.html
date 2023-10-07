@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Formulario de Habilidades y Preferencias</title>
+</head>
+<body>
+<h1>Formulario de Habilidades y Preferencias</h1>
+<form th:action="@{/guardar-habilidades}" method="post">
+    <label>Habilidades:</label>
+    <div th:each="habilidad : ${habilidades}">
+        <input type="checkbox" id="habilidad-[[${habilidad.id}]]" name="habilidades" th:value="${habilidad.id}" />
+        <label th:for="'habilidad -' + ${habilidad.id}" th:text="${habilidad.nombre}"></label>
+        <br />
+    </div>
+    <br />
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
