@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface IHabilidadesService {
 
-    public List<Habilidade> findAll();
-
-    public List<Habilidade> findByIds(List<Integer> ids);
+    List<Habilidade> findAll();
 
 }

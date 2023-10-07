@@ -14,7 +14,7 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombre_proyecto", nullable = false, length = 100)
+    @Column(name = "nombre_proyecto", nullable = false, length = 1000)
     private String nombreProyecto;
 
     @Lob

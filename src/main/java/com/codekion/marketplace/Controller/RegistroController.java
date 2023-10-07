@@ -3,10 +3,12 @@ package com.codekion.marketplace.Controller;
 import com.codekion.marketplace.Models.entity.Habilidade;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
-import com.codekion.marketplace.Models.repository.HabilidadesRepository;
+import com.codekion.marketplace.Models.entity.UsuariosHabilidade;
+import com.codekion.marketplace.Models.repository.HabilidadesUsuariosRepository;
 import com.codekion.marketplace.Models.repository.UsuarioRepository;
 import com.codekion.marketplace.Models.repository.UsuariosSubCategoriasRepository;
 import com.codekion.marketplace.Models.service.IService.IHabilidadesService;
+import com.codekion.marketplace.Models.service.IService.IHabilidadesUsuariosService;
 import com.codekion.marketplace.Models.service.IService.ISubCategoriaService;
 import com.codekion.marketplace.Models.service.IService.IUsuarioService;
 import jakarta.servlet.http.HttpSession;
@@ -30,21 +32,18 @@ public class RegistroController {
     private IUsuarioService usuarioService;
 
     @Autowired
+    private IHabilidadesUsuariosService habilidadesUsuariosService;
+
+    @Autowired
     private IHabilidadesService habilidadesService;
 
     @Autowired
     private ISubCategoriaService subCategoriaService;
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    @Autowired
-    private HabilidadesRepository habilidadesRepository;
-    @Autowired
-    private UsuariosSubCategoriasRepository usuariosSubCategoriasRepository;
 
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("titulo", "Login");
-        return "pages/loginForm";
+        return "pages/login";
     }
 
     @PostMapping("/login")
@@ -75,9 +74,9 @@ public class RegistroController {
         }
         //Podriamos hacer que no se registry en la base datos, ya que ya esta en la sesion, luego de completar todos los
         //formularios posteriores, se registra en la base de datos
-        usuarioService.save(usuario);
+        //usuarioService.save(usuario);
         //con status.complete se elimina el objeto usuario de la sesion y se cierra la sesion
-        status.setComplete();
+        //status.setComplete();
         return "redirect:/postForm";
     }
 
@@ -92,11 +91,11 @@ public class RegistroController {
     }
 
     @PostMapping("/postForm")
-    public String postForm(@RequestParam("habilidades") List<Integer> habilidadesiD, @RequestParam("subCategorias") List<Integer> subCategoriasIds,
+    public String postForm(@RequestParam("habilidades") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
                            HttpSession session) {
 
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        List<Habilidade> lstHabilidades = habilidadesService.findByIds(habilidadesiD);
+        List<UsuariosHabilidade> lstHabilidades = habilidadesUsuariosService.findAllByIdIn(habilidadesiD);
         List<SubCategoria> lstSubCategorias = subCategoriaService.findByIds(subCategoriasIds);
         //usuariosSubCategoriasRepository.saveCategoriasUsuarios(usuario, lstSubCategorias);
         //usuarioRepository.save(usuario);
@@ -104,7 +103,7 @@ public class RegistroController {
             System.out.print(subCategoria.toString());
         }
 
-        for (Habilidade habilidades : lstHabilidades) {
+        for (UsuariosHabilidade habilidades : lstHabilidades) {
             System.out.print(habilidades.toString());
         }
 

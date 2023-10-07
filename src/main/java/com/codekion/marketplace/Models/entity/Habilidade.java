@@ -16,7 +16,7 @@ public class Habilidade {
     @Column(name = "id_habilidad", nullable = false)
     private Integer id;
 
-    @Column(name = "nombre_habilidad", nullable = false, length = 20)
+    @Column(name = "nombre_habilidad", nullable = false, length = 50)
     private String nombreHabilidad;
 
 }

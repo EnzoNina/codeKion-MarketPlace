@@ -14,12 +14,24 @@ import java.util.Objects;
 @Setter
 @Embeddable
 public class UsuariosHabilidadeId implements Serializable {
+
+
     private static final long serialVersionUID = -7372714889850262922L;
     @Column(name = "id_usuario", nullable = false)
     private Integer idUsuario;
 
     @Column(name = "id_habilidad", nullable = false)
     private Integer idHabilidad;
+
+    public UsuariosHabilidadeId() {
+
+    }
+
+    //Constructor para el ID
+    public UsuariosHabilidadeId(Integer idUsuario, Integer idHabilidad) {
+        this.idUsuario = idUsuario;
+        this.idHabilidad = idHabilidad;
+    }
 
     @Override
     public boolean equals(Object o) {

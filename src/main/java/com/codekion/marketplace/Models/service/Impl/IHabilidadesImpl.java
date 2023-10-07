@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class IHabilidadesImpl  implements IHabilidadesService {
+public class IHabilidadesImpl implements IHabilidadesService {
 
     @Autowired
     private HabilidadesRepository habilidadesRepository;
@@ -17,10 +17,5 @@ public class IHabilidadesImpl  implements IHabilidadesService {
     @Override
     public List<Habilidade> findAll() {
         return habilidadesRepository.findAll();
-    }
-
-    @Override
-    public List<Habilidade> findByIds(List<Integer> ids) {
-        return habilidadesRepository.findAllById(ids);
     }
 }
