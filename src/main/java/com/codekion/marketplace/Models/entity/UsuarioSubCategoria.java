@@ -11,6 +11,7 @@ import lombok.Setter;
 @Table(name = "usuario_sub_categoria")
 public class UsuarioSubCategoria {
 
+
     @EmbeddedId
     private UsuarioSubCategoriaId id;
 
@@ -24,4 +25,12 @@ public class UsuarioSubCategoria {
     @JoinColumn(name = "id_sub_categoria", nullable = false)
     private SubCategoria idSubCategoria;
 
+    public UsuarioSubCategoria(Usuario usuario, SubCategoria x) {
+        this.idUsuario = usuario;
+        this.idSubCategoria = x;
+    }
+
+    public UsuarioSubCategoria() {
+
+    }
 }

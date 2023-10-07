@@ -8,8 +8,8 @@ public interface ISub_Categorias_UsuariosService {
 
     UsuarioSubCategoria findById(UsuarioSubCategoriaId idUsuario);
 
-    public List<UsuarioSubCategoria> findAllByIdIn(List<Integer> ids);
 
     void saveCategoriasUsuarios(Usuario usuario, List<SubCategoria> subCategorias);
 
+    List<UsuarioSubCategoria> findByIDs(Usuario usuario, List<Integer> subCategoriasIds);
 }

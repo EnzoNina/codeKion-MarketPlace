@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ISubCategoriaImpl  implements ISubCategoriaService {
+public class ISubCategoriaImpl implements ISubCategoriaService {
 
     @Autowired
     private SubCategoriaRepository subCategoriaRepository;
@@ -22,7 +22,8 @@ public class ISubCategoriaImpl  implements ISubCategoriaService {
 
     @Override
     public List<SubCategoria> findByIds(List<Integer> ids) {
-        return subCategoriaRepository.findAllById(ids);
+        List<SubCategoria> lst = subCategoriaRepository.findAll();
+        return lst.stream().filter(x -> ids.contains(x.getId())).toList();
     }
 
 }

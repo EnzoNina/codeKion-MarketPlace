@@ -24,13 +24,6 @@ public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosServ
         return usuariosSubCategoriasRepository.findById(idUsuario).orElse(null);
     }
 
-    @Override
-    public List<UsuarioSubCategoria> findAllByIdIn(List<Integer> ids) {
-
-        List<SubCategoria> lst = subCategoriaRepository.findAll();
-        return lst.stream().filter(x -> ids.contains(x.getId())).toList();
-
-    }
 
     @Override
     @Transactional
@@ -38,11 +31,23 @@ public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosServ
 
         for (SubCategoria subCategoria : lstsubCategorias) {
             UsuarioSubCategoria usuarioSubCategoria = new UsuarioSubCategoria();
-            usuarioSubCategoria.setId(new UsuarioSubCategoriaId(usuario.getId(),subCategoria.getId()));
+            usuarioSubCategoria.setId(new UsuarioSubCategoriaId(usuario.getId(), subCategoria.getId()));
             usuarioSubCategoria.setIdUsuario(usuario);
             usuarioSubCategoria.setIdSubCategoria(subCategoria);
             usuariosSubCategoriasRepository.save(usuarioSubCategoria);
         }
+
+    }
+
+    @Override
+    public List<UsuarioSubCategoria> findByIDs(Usuario usuario, List<Integer> subCategoriasIds) {
+
+        List<SubCategoria> lst = subCategoriaRepository.findAll();
+
+        return lst.stream()
+                .filter(x -> subCategoriasIds.contains(x.getId()))
+                .map(x -> new UsuarioSubCategoria(usuario, x))
+                .toList();
 
     }
 }

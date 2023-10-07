@@ -9,6 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuarios_habilidades")
 public class UsuariosHabilidade {
+
     @EmbeddedId
     private UsuariosHabilidadeId id;
 
@@ -22,4 +23,12 @@ public class UsuariosHabilidade {
     @JoinColumn(name = "id_habilidad", nullable = false)
     private Habilidade idHabilidad;
 
+    public UsuariosHabilidade(Usuario usuario, Habilidade x) {
+        this.idUsuario = usuario;
+        this.idHabilidad = x;
+    }
+
+    public UsuariosHabilidade() {
+
+    }
 }

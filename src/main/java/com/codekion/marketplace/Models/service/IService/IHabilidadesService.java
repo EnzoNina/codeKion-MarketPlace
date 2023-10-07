@@ -8,4 +8,5 @@ public interface IHabilidadesService {
 
     List<Habilidade> findAll();
 
+    List<Habilidade> findByIds(List<Integer> habilidadesiD);
 }

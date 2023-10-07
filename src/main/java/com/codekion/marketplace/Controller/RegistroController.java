@@ -1,16 +1,10 @@
 package com.codekion.marketplace.Controller;
 
-import com.codekion.marketplace.Models.entity.Habilidade;
-import com.codekion.marketplace.Models.entity.SubCategoria;
-import com.codekion.marketplace.Models.entity.Usuario;
-import com.codekion.marketplace.Models.entity.UsuariosHabilidade;
+import com.codekion.marketplace.Models.entity.*;
 import com.codekion.marketplace.Models.repository.HabilidadesUsuariosRepository;
 import com.codekion.marketplace.Models.repository.UsuarioRepository;
 import com.codekion.marketplace.Models.repository.UsuariosSubCategoriasRepository;
-import com.codekion.marketplace.Models.service.IService.IHabilidadesService;
-import com.codekion.marketplace.Models.service.IService.IHabilidadesUsuariosService;
-import com.codekion.marketplace.Models.service.IService.ISubCategoriaService;
-import com.codekion.marketplace.Models.service.IService.IUsuarioService;
+import com.codekion.marketplace.Models.service.IService.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +33,10 @@ public class RegistroController {
 
     @Autowired
     private ISubCategoriaService subCategoriaService;
+
+    @Autowired
+    private ISub_Categorias_UsuariosService subCategoriasUsuariosService;
+
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -95,17 +93,15 @@ public class RegistroController {
                            HttpSession session) {
 
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        List<UsuariosHabilidade> lstHabilidades = habilidadesUsuariosService.findAllByIdIn(habilidadesiD);
+        //List<UsuariosHabilidade> lstHabilidades = habilidadesUsuariosService.findAllByIds(usuario, habilidadesiD);
+        //List<UsuarioSubCategoria> lstSubCategorias = subCategoriasUsuariosService.findByIDs(usuario, subCategoriasIds);
+        List<Habilidade> lstHabilidades = habilidadesService.findByIds(habilidadesiD);
         List<SubCategoria> lstSubCategorias = subCategoriaService.findByIds(subCategoriasIds);
-        //usuariosSubCategoriasRepository.saveCategoriasUsuarios(usuario, lstSubCategorias);
-        //usuarioRepository.save(usuario);
-        for (SubCategoria subCategoria : lstSubCategorias) {
-            System.out.print(subCategoria.toString());
-        }
 
-        for (UsuariosHabilidade habilidades : lstHabilidades) {
-            System.out.print(habilidades.toString());
-        }
+        usuarioService.save(usuario);
+
+        subCategoriasUsuariosService.saveCategoriasUsuarios(usuario, lstSubCategorias);
+        habilidadesUsuariosService.saveHabilidadesUsuarios(usuario, lstHabilidades);
 
         return "pages/postForm";
     }

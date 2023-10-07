@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface UsuariosSubCategoriasRepository  extends JpaRepository<UsuarioSubCategoria, UsuarioSubCategoriaId> {
 
-     List<UsuarioSubCategoria> findAllByIdIn(List<Integer> ids);
 
 
 }
