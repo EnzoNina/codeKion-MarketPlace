@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Colaboradores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Colaboradores</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nombre de Usuario</th>
+            <th>Habilidades</th>
+            <th>Subcategorías</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Utiliza Thymeleaf para iterar a través de la lista de usuarios -->
+        <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
+            <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
+            <td>
+                <!-- Utiliza Thymeleaf para iterar a través de las habilidades -->
+                <ul>
+                    <li th:each="habilidad : ${usuarioInfoDto.habilidades}" th:text="${habilidad.nombreHabilidad}"></li>
+                </ul>
+            </td>
+            <td>
+                <!-- Utiliza Thymeleaf para iterar a través de las subcategorías -->
+                <ul>
+                    <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
+                        th:text="${subCategoria.nombreSubCategoria}"></li>
+                </ul>
+            </td>
+            <td>
+                <!-- Botón para abrir el modal -->
+                <button class="abrirModalBtn" data-toggle="modal" data-target="#myModal">Enviar Solicitud</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Selecciona un Proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Aquí puedes mostrar la lista de proyectos obtenida desde el controlador -->
+                <select id="proyectos" class="form-control">
+                    <!-- Utiliza Thymeleaf para iterar sobre la lista de proyectos y mostrarlos en las opciones del select -->
+                    <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}"
+                            th:text="${proyecto.nombre}"></option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <!-- Botón para enviar la solicitud -->
+                <button id="enviarSolicitudBtn" class="btn btn-primary">Enviar Solicitud</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript para cargar la lista de proyectos -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+
+    // Realiza la llamada AJAX para obtener proyectos
+    $.ajax({
+        url: "/getProyectos", // Asegúrate de que la URL sea correcta
+        type: "GET",
+        dataType: "json", // Esto depende de cómo estés respondiendo desde el controlador
+        success: function (data) {
+            // Verifica los datos recibidos en la consola
+            console.log("Proyectos recibidos:", data);
+
+            // Actualiza el contenido del select con los proyectos
+            var proyectosSelect = $("#proyectos");
+            proyectosSelect.empty();
+            $.each(data, function (index, proyecto) {
+                proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombre + "</option>");
+            });
+        },
+        error: function (error) {
+            console.error("Error al obtener proyectos:", error);
+        }
+    });
+
+    // Cuando se haga clic en el botón "Enviar Solicitud", realiza la acción deseada
+    document.getElementById("enviarSolicitudBtn").addEventListener("click", function () {
+        // Obtiene el valor seleccionado en el select de proyectos
+        var proyectoSeleccionado = document.getElementById("proyectos").value;
+
+        // Realiza la acción deseada, por ejemplo, enviar la solicitud al proyecto seleccionado
+        console.log("Se envió la solicitud al proyecto con ID: " + proyectoSeleccionado);
+
+        // Cierra el modal después de realizar la acción
+        $("#myModal").modal("hide");
+    });
+</script>
+</body>
+</html>

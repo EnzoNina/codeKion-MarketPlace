@@ -1,5 +1,6 @@
 package com.codekion.marketplace.Models.service.Impl;
 
+import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesDTO;
 import com.codekion.marketplace.Models.repository.UsuarioRepository;
 import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Models.service.IService.IUsuarioService;
@@ -34,4 +35,8 @@ public class IUsuarioImpl implements IUsuarioService {
         return usuarioDao.findById(id).orElse(null);
     }
 
+    @Override
+    public List<UsuarioHabilidadesDTO> buscarUsuariosYHabilidades() {
+        return usuarioDao.buscarUsuariosYHabilidades();
+    }
 }

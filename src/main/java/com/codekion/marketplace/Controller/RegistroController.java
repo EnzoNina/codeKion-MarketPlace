@@ -45,12 +45,12 @@ public class RegistroController {
     }
 
     @PostMapping("/login")
-    public String loginPost(@RequestParam String user, @RequestParam String pass, Model model) {
+    public String loginPost(@RequestParam String user, @RequestParam String pass, HttpSession session) {
         Usuario usuario = usuarioService.findByUserAndPass(user, pass);
 
         if (usuario != null) {
-            model.addAttribute("usuario", usuario);
-            return "pages/home";
+            session.setAttribute("usuario", usuario);
+            return "redirect:/home";
         } else {
             return "redirect:/";
         }
@@ -65,16 +65,12 @@ public class RegistroController {
     }
 
     @PostMapping("/registrar")
-    public String registrarPost(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
+    public String registrarPost(@Valid Usuario usuario, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Registrar de Usuario");
             return "redirect:/";
         }
-        //Podriamos hacer que no se registry en la base datos, ya que ya esta en la sesion, luego de completar todos los
-        //formularios posteriores, se registra en la base de datos
-        //usuarioService.save(usuario);
-        //con status.complete se elimina el objeto usuario de la sesion y se cierra la sesion
-        //status.setComplete();
+
         return "redirect:/postForm";
     }
 
@@ -93,8 +89,6 @@ public class RegistroController {
                            HttpSession session) {
 
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        //List<UsuariosHabilidade> lstHabilidades = habilidadesUsuariosService.findAllByIds(usuario, habilidadesiD);
-        //List<UsuarioSubCategoria> lstSubCategorias = subCategoriasUsuariosService.findByIDs(usuario, subCategoriasIds);
         List<Habilidade> lstHabilidades = habilidadesService.findByIds(habilidadesiD);
         List<SubCategoria> lstSubCategorias = subCategoriaService.findByIds(subCategoriasIds);
 
@@ -103,7 +97,7 @@ public class RegistroController {
         subCategoriasUsuariosService.saveCategoriasUsuarios(usuario, lstSubCategorias);
         habilidadesUsuariosService.saveHabilidadesUsuarios(usuario, lstHabilidades);
 
-        return "pages/postForm";
+        return "redirect:/home";
     }
 
 }

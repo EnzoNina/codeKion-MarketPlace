@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Bienvenido</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Proyectos</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+    />
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" rel="stylesheet">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 </head>
 <body>
-<h1>Bienvenido, <span th:text="${session.usuario.nombre}" ></span>!</h1>
+
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="container-fluid p-4 vh-100">
+        <div class="row vh-100">
+            <div class="col-md-2 card">
+
+                <section>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <h2 class="fw-bold">Filtrar por</h2>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Subcategorías</label>
+                        <div th:each="subcategoria : ${subcategorias}">
+                            <a th:href="@{/proyectos/subcategoria/{id}(id=${subcategoria.id})}"
+                               class="btn btn-secondary me-2 mb-2" th:text="${subcategoria.nombreSubCategoria}"></a>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Buscar</label>
+                        <input
+                                type="text"
+                                style="width: 75%;"
+                                class="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="Título de la sub categgoria"
+                        />
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section id="publicaciones">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h2 class="fw-bold">Publicaciones</h2>
+                    </div>
+                    <div th:if="${proyectos == null}">
+                        <p>No hay proyectos disponibles.</p>
+                    </div>
+                    <table id="proyectosTable" class="table">
+                        <thead>
+                        <tr>
+                            <th>Nombre del Proyecto</th>
+                            <th>Descripción</th>
+                            <th>URL</th>
+                            <th>Estado</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="proyecto : ${proyectos}">
+                            <td th:text="${proyecto.nombreProyecto}"></td>
+                            <td th:text="${proyecto.descripcionProyecto}"></td>
+                            <td th:text="${proyecto.urlProyecto}"></td>
+                            <td th:text="${proyecto.estadoProyecto}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    $(document).ready(function () {
+        $('#proyectosTable').DataTable();
+    });
+</script>
 </body>
 </html>

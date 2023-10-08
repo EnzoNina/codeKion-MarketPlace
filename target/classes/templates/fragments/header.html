@@ -1,0 +1,68 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img
+                        th:src="@{/img/codeKion.jpg}"
+                        alt="Logo de la página"
+                        width="30"
+                        height="30"
+                        class="d-inline-block align-text-top"
+                />
+                <span class="fw-bold fs-4 text-primary">Bienvenido <span th:text="${usuario.nombre}" ></span> </span>
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul
+                        class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0"
+                >
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <span class="fw-bold">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/Crearproyecto}">
+                            <span class="fw-bold">Crear Proyecto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/BuscarProyecto}">
+                            <span class="fw-bold">Buscar proyectos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/Buscarcolaboradores}">
+                            <span class="fw-bold">Buscar colaboradores</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="d-flex">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="fw-bold">Perfil</span>
+                    </a>
+                </li>
+            </div>
+            <div class="d-flex">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/exit}">
+                        <span class="fw-bold">Cerrar Sesion</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+</header>

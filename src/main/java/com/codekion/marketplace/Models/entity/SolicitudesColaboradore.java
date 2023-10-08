@@ -21,7 +21,7 @@ public class SolicitudesColaboradore {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
 
-    @Column(name = "estado_solicitud", nullable = false)
+    @Column(name = "estado_solicitud", nullable = true)
     private Boolean estadoSolicitud = false;
 
 }

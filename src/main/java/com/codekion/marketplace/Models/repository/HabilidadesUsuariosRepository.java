@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface HabilidadesUsuariosRepository extends JpaRepository<UsuariosHabilidade,Integer> {
 
-    List<UsuariosHabilidade> findAllByIdIn(List<Integer> ids);
-
 }
