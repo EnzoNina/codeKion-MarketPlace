@@ -7,8 +7,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "habilidades")
 public class Habilidade {
@@ -19,4 +17,19 @@ public class Habilidade {
     @Column(name = "nombre_habilidad", nullable = false, length = 50)
     private String nombreHabilidad;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombreHabilidad() {
+        return nombreHabilidad;
+    }
+
+    public void setNombreHabilidad(String nombreHabilidad) {
+        this.nombreHabilidad = nombreHabilidad;
+    }
 }

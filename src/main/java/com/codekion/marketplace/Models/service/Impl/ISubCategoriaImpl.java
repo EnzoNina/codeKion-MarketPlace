@@ -22,8 +22,6 @@ public class ISubCategoriaImpl implements ISubCategoriaService {
 
     @Override
     public List<SubCategoria> findByIds(List<Integer> ids) {
-        List<SubCategoria> lst = subCategoriaRepository.findAll();
-        return lst.stream().filter(x -> ids.contains(x.getId())).toList();
+       return subCategoriaRepository.findByIdIn(ids);
     }
-
 }

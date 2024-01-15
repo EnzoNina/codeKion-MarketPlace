@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "usuarios_habilidades")
 public class UsuariosHabilidade {
@@ -30,5 +28,29 @@ public class UsuariosHabilidade {
 
     public UsuariosHabilidade() {
 
+    }
+
+    public UsuariosHabilidadeId getId() {
+        return id;
+    }
+
+    public void setId(UsuariosHabilidadeId id) {
+        this.id = id;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Habilidade getIdHabilidad() {
+        return idHabilidad;
+    }
+
+    public void setIdHabilidad(Habilidade idHabilidad) {
+        this.idHabilidad = idHabilidad;
     }
 }

@@ -11,9 +11,10 @@ import lombok.Setter;
 @Table(name = "usuario_sub_categoria")
 public class UsuarioSubCategoria {
 
-
+    //Llave PK Compuesta
     @EmbeddedId
     private UsuarioSubCategoriaId id;
+
 
     @MapsId("idUsuario")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
