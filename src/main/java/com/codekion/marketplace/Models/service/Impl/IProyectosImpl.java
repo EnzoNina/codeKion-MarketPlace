@@ -37,17 +37,14 @@ public class IProyectosImpl implements IProyectosService {
 
     @Override
     public List<Proyecto> findByJefeProyecto(Integer id) {
-        System.out.println("HOLAAAAAAAAAAAAAAAAA" +id);
-        List<UsuarioProyectoDTO> lstDTO = proyectoRepository.buscarProyectosPorUsuario();
+        List<UsuarioProyectoDTO> lstDTO = proyectoRepository.buscarProyectosPorUsuario(id);
+        //Con UsuarioProyectoDTO::getProyectos obtenemos los proyectos que pertenecen al usuario con el id que se le pasa por parametro
+        List<Proyecto> lstProyectos = lstDTO.stream().map(UsuarioProyectoDTO::getProyecto).toList();
 
-
-        List<Proyecto> lstProyectos = new ArrayList<>();
+        for (Proyecto proyecto : lstProyectos) {
+            System.out.println("Nombre del proyecto: " + proyecto.getNombreProyecto());
+        }
         //Hacemos un for para recorrer la lista de DTO y obtener los proyectos que pertenecen al usuario con el id que se le pasa por parametro
-        lstDTO.forEach(dto -> {
-            if (Objects.equals(dto.getUsuario().getId(), id)) {
-                lstProyectos.add(dto.getProyectos());
-            }
-        });
         return lstProyectos;
     }
 

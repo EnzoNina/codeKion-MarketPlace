@@ -23,19 +23,12 @@ public class ProyectoController {
     @Autowired
     private IProyectosService proyectosService;
 
+    //Se esta utilizando en buscarColaboradores.html en el script del ajax
     @GetMapping("/getProyectos")
     @ResponseBody
     public List<Proyecto> getProyectos(HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        System.out.println(usuario.toString());
-
         List<Proyecto> lst = proyectosService.findByJefeProyecto(usuario.getId());
-
-        for (Proyecto proyecto : lst) {
-            System.out.println(proyecto.getNombreProyecto());
-        }
-
-
         return lst;
     }
 

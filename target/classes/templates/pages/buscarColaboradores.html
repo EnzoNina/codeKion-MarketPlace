@@ -55,11 +55,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Aquí puedes mostrar la lista de proyectos obtenida desde el controlador -->
                 <select id="proyectos" class="form-control">
-                    <!-- Utiliza Thymeleaf para iterar sobre la lista de proyectos y mostrarlos en las opciones del select -->
                     <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}"
-                            th:text="${proyecto.nombre}"></option>
+                            th:text="${proyecto.id} - ${proyecto.nombreProyecto}"></option>
                 </select>
             </div>
             <div class="modal-footer">
@@ -78,18 +76,17 @@
 
     // Realiza la llamada AJAX para obtener proyectos
     $.ajax({
-        url: "/getProyectos", // Asegúrate de que la URL sea correcta
+        url: "/getProyectos",
         type: "GET",
-        dataType: "json", // Esto depende de cómo estés respondiendo desde el controlador
+        dataType: "json",
         success: function (data) {
             // Verifica los datos recibidos en la consola
             console.log("Proyectos recibidos:", data);
-
             // Actualiza el contenido del select con los proyectos
             var proyectosSelect = $("#proyectos");
             proyectosSelect.empty();
             $.each(data, function (index, proyecto) {
-                proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombre + "</option>");
+                proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");
             });
         },
         error: function (error) {
@@ -103,7 +100,7 @@
         var proyectoSeleccionado = document.getElementById("proyectos").value;
 
         // Realiza la acción deseada, por ejemplo, enviar la solicitud al proyecto seleccionado
-        console.log("Se envió la solicitud al proyecto con ID: " + proyectoSeleccionado);
+        alert("Se envió la solicitud al proyecto con ID: " + proyectoSeleccionado);
 
         // Cierra el modal después de realizar la acción
         $("#myModal").modal("hide");

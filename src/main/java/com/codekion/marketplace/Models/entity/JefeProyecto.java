@@ -11,7 +11,7 @@ import lombok.Setter;
 public class JefeProyecto {
     @Id
     @Column(name = "id_jefe_proyecto", nullable = false)
-    private Integer id;
+    private Integer id_jefe_proyecto;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")

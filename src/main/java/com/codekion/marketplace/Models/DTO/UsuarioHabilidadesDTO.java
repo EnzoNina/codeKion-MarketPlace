@@ -3,12 +3,9 @@ package com.codekion.marketplace.Models.DTO;
 import com.codekion.marketplace.Models.entity.Habilidade;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-
 public class UsuarioHabilidadesDTO {
 
     private Usuario usuario;

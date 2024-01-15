@@ -53,7 +53,7 @@ public class ColaboradoresController {
             }
         }
 
-        // Envía el mapa al modelo
+        // Envía un List<UsuarioInfoDto> que tiene Usuario, habilidad y subCategoria
         model.put("usuarioInfoList", buildUsuarioInfoList(usuarioHabilidadesMap, usuarioSubCategoriasMap));
 
         return "pages/buscarColaboradores";
