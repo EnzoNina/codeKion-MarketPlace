@@ -1,18 +1,20 @@
 package com.codekion.marketplace.Controller;
 
-import com.codekion.marketplace.Models.DTO.UsuarioDTO;
 import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesDTO;
 import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
-import com.codekion.marketplace.Models.entity.Colaboradore;
 import com.codekion.marketplace.Models.entity.Habilidade;
+import com.codekion.marketplace.Models.entity.Proyecto;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Models.service.IService.IColaboradoresService;
+import com.codekion.marketplace.Models.service.IService.ISolicitudColaboradoresService;
 import com.codekion.marketplace.Models.service.IService.IUsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -20,10 +22,10 @@ import java.util.*;
 public class ColaboradoresController {
 
     @Autowired
-    private IColaboradoresService colaboradoresService;
+    private IUsuarioService usuarioService;
 
     @Autowired
-    private IUsuarioService usuarioService;
+    private ISolicitudColaboradoresService solicitudColaboradoresService;
 
     @GetMapping("/Buscarcolaboradores")
     public String buscarCreadores(Map<String, Object> model) {
@@ -60,7 +62,10 @@ public class ColaboradoresController {
     }
 
     @PostMapping("/Buscarcolaboradores")
-    public String enviarSolicitud() {
+    public String enviarSolicitud(@RequestParam("proyecto") Proyecto proyecto, HttpSession session) {
+        Usuario usuario  = (Usuario) session.getAttribute("usuario");
+        System.out.println("El ID del proyecto seleccionado es: " + proyecto.getId() + proyecto.getNombreProyecto());
+        solicitudColaboradoresService.enviarSolicitud(proyecto,usuario);
         return "redirect:/home";
     }
 

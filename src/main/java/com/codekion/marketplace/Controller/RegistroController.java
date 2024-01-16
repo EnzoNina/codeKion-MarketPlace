@@ -85,7 +85,7 @@ public class RegistroController {
     }
 
     @PostMapping("/postForm")
-    public String postForm(@RequestParam("habilidades") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
+    public String postForm(@RequestParam("idProyecto") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
                            HttpSession session) {
 
         Usuario usuario = (Usuario) session.getAttribute("usuario");

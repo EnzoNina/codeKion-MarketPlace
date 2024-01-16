@@ -22,7 +22,7 @@ public class Proyecto {
     private String urlProyecto;
 
     @Lob
-    @Column(name = "descripcion_proyecto", nullable = false)
+    @Column(name = "descripcion_proyecto", nullable = false,columnDefinition = "text")
     private String descripcionProyecto;
 
     @Lob

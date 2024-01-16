@@ -9,7 +9,4 @@ import java.util.List;
 
 public interface HabilidadesUsuariosRepository extends JpaRepository<UsuariosHabilidade,Integer> {
 
-    @Query("select uh from UsuariosHabilidade uh where uh.idUsuario =:usuario and uh.idHabilidad.id in :ids")
-    List<UsuariosHabilidade> findAllBysIds(Usuario usuario,List<Integer> ids);
-
 }

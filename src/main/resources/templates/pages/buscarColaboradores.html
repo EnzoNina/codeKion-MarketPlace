@@ -19,17 +19,14 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Utiliza Thymeleaf para iterar a través de la lista de usuarios -->
         <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
             <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
             <td>
-                <!-- Utiliza Thymeleaf para iterar a través de las habilidades -->
                 <ul>
                     <li th:each="habilidad : ${usuarioInfoDto.habilidades}" th:text="${habilidad.nombreHabilidad}"></li>
                 </ul>
             </td>
             <td>
-                <!-- Utiliza Thymeleaf para iterar a través de las subcategorías -->
                 <ul>
                     <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
                         th:text="${subCategoria.nombreSubCategoria}"></li>
@@ -54,16 +51,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <select id="proyectos" class="form-control">
-                    <option th:each="proyecto : ${proyectos}" th:value="${proyecto.id}"
-                            th:text="${proyecto.id} - ${proyecto.nombreProyecto}"></option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <!-- Botón para enviar la solicitud -->
-                <button id="enviarSolicitudBtn" class="btn btn-primary">Enviar Solicitud</button>
-            </div>
+            <form th:action="@{/Buscarcolaboradores}" method="post">
+                <div class="modal-body">
+                        <select id="proyecto" name="proyecto"  class="form-control">
+                            <option th:each="proyecto : ${proyectos}" th:value="${proyecto}"
+                                    th:text="${proyecto.id} - ${proyecto.nombreProyecto}" ></option>
+                        </select>
+                </div>
+                <div class="modal-footer">
+                    <!-- Botón para enviar la solicitud -->
+                    <button type="submit" id="enviarSolicitudBtn" class="btn btn-primary">Enviar Solicitud</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -83,7 +82,7 @@
             // Verifica los datos recibidos en la consola
             console.log("Proyectos recibidos:", data);
             // Actualiza el contenido del select con los proyectos
-            var proyectosSelect = $("#proyectos");
+            var proyectosSelect = $("#proyecto");
             proyectosSelect.empty();
             $.each(data, function (index, proyecto) {
                 proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SubCategoriaRepository  extends JpaRepository<SubCategoria, Integer> {
 
-    @Query("select s from SubCategoria s where s.id =:ids")
+    @Query("select s from SubCategoria s where s.id IN :ids")
     List<SubCategoria> findByIdIn(List<Integer> ids);
 
 }

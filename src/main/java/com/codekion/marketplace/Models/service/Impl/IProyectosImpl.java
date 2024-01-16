@@ -40,11 +40,6 @@ public class IProyectosImpl implements IProyectosService {
         List<UsuarioProyectoDTO> lstDTO = proyectoRepository.buscarProyectosPorUsuario(id);
         //Con UsuarioProyectoDTO::getProyectos obtenemos los proyectos que pertenecen al usuario con el id que se le pasa por parametro
         List<Proyecto> lstProyectos = lstDTO.stream().map(UsuarioProyectoDTO::getProyecto).toList();
-
-        for (Proyecto proyecto : lstProyectos) {
-            System.out.println("Nombre del proyecto: " + proyecto.getNombreProyecto());
-        }
-        //Hacemos un for para recorrer la lista de DTO y obtener los proyectos que pertenecen al usuario con el id que se le pasa por parametro
         return lstProyectos;
     }
 
