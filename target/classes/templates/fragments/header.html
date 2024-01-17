@@ -9,7 +9,7 @@
                         height="30"
                         class="d-inline-block align-text-top"
                 />
-                <span class="fw-bold fs-4 text-primary">Bienvenido <span th:text="${usuario.nombre}" ></span> </span>
+                <span class="fw-bold fs-4 text-primary">Bienvenido <span th:text="${session.usuario.nombre}" ></span> </span>
             </a>
             <button
                     class="navbar-toggler"
@@ -50,18 +50,19 @@
                 </ul>
             </div>
             <div class="d-flex">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/perfil}">
+                        <i class="bi bi-person"></i>
                         <span class="fw-bold">Perfil</span>
                     </a>
-                </li>
+            </div>
+            <div style="padding: 10px" >
+                <span class="fw-bold">|</span>
             </div>
             <div class="d-flex">
-                <li class="nav-item">
                     <a class="nav-link" th:href="@{/exit}">
                         <span class="fw-bold">Cerrar Sesion</span>
+                        <i class="bi bi-x-circle-fill"></i>
                     </a>
-                </li>
             </div>
         </div>
     </nav>

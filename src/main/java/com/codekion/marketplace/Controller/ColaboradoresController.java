@@ -62,10 +62,9 @@ public class ColaboradoresController {
     }
 
     @PostMapping("/Buscarcolaboradores")
-    public String enviarSolicitud(@RequestParam("proyecto") Proyecto proyecto, HttpSession session) {
-        Usuario usuario  = (Usuario) session.getAttribute("usuario");
-        System.out.println("El ID del proyecto seleccionado es: " + proyecto.getId() + proyecto.getNombreProyecto());
-        solicitudColaboradoresService.enviarSolicitud(proyecto,usuario);
+    public String enviarSolicitud(@RequestParam("userId") Integer userId,@RequestParam("proyecto") Proyecto proyecto) {
+        Usuario user = usuarioService.findById(userId);
+        solicitudColaboradoresService.enviarSolicitud(proyecto,user);
         return "redirect:/home";
     }
 

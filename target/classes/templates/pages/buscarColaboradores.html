@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Colaboradores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+<div th:replace="~{fragments/head :: head}"></div>
 <body>
+<div th:replace="~{fragments/header :: header}"></div>
 <div class="container">
     <h1>Lista de Colaboradores</h1>
     <table class="table">
@@ -34,7 +30,7 @@
             </td>
             <td>
                 <!-- Botón para abrir el modal -->
-                <button class="abrirModalBtn" data-toggle="modal" data-target="#myModal">Enviar Solicitud</button>
+                <button class="abrirModalBtn"  data-toggle="modal" data-target="#myModal" th:data-user="${usuarioInfoDto.usuario.id}" >Enviar Solicitud</button>
             </td>
         </tr>
         </tbody>
@@ -52,6 +48,7 @@
                 </button>
             </div>
             <form th:action="@{/Buscarcolaboradores}" method="post">
+                <input type="hidden" id="userInput" name="userId" />
                 <div class="modal-body">
                         <select id="proyecto" name="proyecto"  class="form-control">
                             <option th:each="proyecto : ${proyectos}" th:value="${proyecto}"
@@ -71,39 +68,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-
-    // Realiza la llamada AJAX para obtener proyectos
-    $.ajax({
-        url: "/getProyectos",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            // Verifica los datos recibidos en la consola
-            console.log("Proyectos recibidos:", data);
-            // Actualiza el contenido del select con los proyectos
-            var proyectosSelect = $("#proyecto");
-            proyectosSelect.empty();
-            $.each(data, function (index, proyecto) {
-                proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");
-            });
-        },
-        error: function (error) {
-            console.error("Error al obtener proyectos:", error);
-        }
-    });
-
-    // Cuando se haga clic en el botón "Enviar Solicitud", realiza la acción deseada
-    document.getElementById("enviarSolicitudBtn").addEventListener("click", function () {
-        // Obtiene el valor seleccionado en el select de proyectos
-        var proyectoSeleccionado = document.getElementById("proyectos").value;
-
-        // Realiza la acción deseada, por ejemplo, enviar la solicitud al proyecto seleccionado
-        alert("Se envió la solicitud al proyecto con ID: " + proyectoSeleccionado);
-
-        // Cierra el modal después de realizar la acción
-        $("#myModal").modal("hide");
-    });
-</script>
+<script th:src="@{/js/buscarColaboradores.js}"></script>
 </body>
 </html>

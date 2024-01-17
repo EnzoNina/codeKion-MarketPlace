@@ -9,7 +9,6 @@ import java.util.List;
 public class UsuarioInfoDto {
 
     private Usuario usuario;
-
     private List<Habilidade> habilidades;
     private List<SubCategoria> subCategorias;
 

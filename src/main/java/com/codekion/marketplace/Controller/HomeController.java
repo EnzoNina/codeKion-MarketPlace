@@ -56,4 +56,9 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/perfil")
+    public String irPerfil(){
+        return "pages/perfil-usuario";
+    }
+
 }
