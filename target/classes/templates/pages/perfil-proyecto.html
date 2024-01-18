@@ -1,120 +1,33 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <div th:replace="~{fragments/head :: head}"></div>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img
-              src="ruta/a/tu/logo.png"
-              alt="Logo de la página"
-              width="30"
-              height="30"
-              class="d-inline-block align-text-top"
-            />
-            <span class="fw-bold fs-4 text-primary">Pagina</span>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul
-              class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0"
-            >
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  <span class="fw-bold">Inicio</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="fw-bold">Página 1</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="fw-bold">Página 2</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span class="fw-bold">Página 3</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="d-flex">
-            <a
-              href="login.html"
-              class="btn btn-outline-primary me-2"
-              type="submit"
-            >
-              <span class="fw-bold">Iniciar sesión</span>
-            </a>
-            <a href="registro.html" class="btn btn-primary" type="submit">
-              <span class="fw-bold">Registrarse</span>
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div class="container mt-5">
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="container mt-5">
         <div class="row">
-          <div class="col-md-8 card">
-            <h1 class="fw-bold mb-4">Título del proyecto</h1>
-            <p class="lead mb-4">Descripción del proyecto</p>
-            <h2 class="fw-bold mb-3">Lenguajes de programación</h2>
-            <ul class="list-unstyled mb-4">
-              <li>Python</li>
-              <li>Java</li>
-              <li>JavaScript</li>
-              <!-- Agrega más lenguajes de programación aquí -->
-            </ul>
-            <h2 class="fw-bold mb-3">Temas de investigación</h2>
-            <ul class="list-unstyled mb-4">
-              <li>Ciencia de datos</li>
-              <li>Inteligencia artificial</li>
-              <li>Desarrollo web</li>
-              <!-- Agrega más temas de investigación aquí -->
-            </ul>
-            <h2 class="fw-bold mb-3">Colaboradores</h2>
-            <ul class="list-unstyled mb-4">
-              <li>Nombre del colaborador 1</li>
-              <li>Nombre del colaborador 2</li>
-              <li>Nombre del colaborador 3</li>
-              <!-- Agrega más colaboradores aquí -->
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4">
-              <div class="card-body">
-                <h2 class="card-title">Información del proyecto</h2>
-                <ul class="list-unstyled">
-                  <li>
-                    <span class="fw-bold">Fecha de inicio:</span> 01/01/2021
-                  </li>
-                  <li>
-                    <span class="fw-bold">Fecha de finalización:</span>
-                    31/12/2021
-                  </li>
-                  <li><span class="fw-bold">Financiamiento:</span> $100,000</li>
-                  <!-- Agrega más información del proyecto aquí -->
+            <div class="col-md-8 card">
+                <h1 class="fw-bold mb-4" th:text="${proyecto.nombreProyecto}" >Título del proyecto</h1>
+                <p class="lead mb-4" th:text="${proyecto.descripcionProyecto}" >Descripción del proyecto</p>
+                <h2 class="fw-bold mb-3">Categorias Del Proyecto</h2>
+                <ul class="list-unstyled mb-4" th:each="proyectoCategoria : ${lstProyectSubCategoria} " >
+                    <li th:text="${proyectoCategoria.idSubCategoria.nombreSubCategoria}" ></li>
                 </ul>
-              </div>
+                <h2 class="fw-bold mb-3">Habilidades Necesarias</h2>
+                <ul class="list-unstyled mb-4" th:each="ph :${proyectoHabilidades} " >
+                    <li th:text="${ph.idHabilidad.nombreHabilidad}" ></li>
+                </ul>
+                <h2 class="fw-bold mb-3">Colaboradores</h2>
+                <ul class="list-unstyled mb-4">
+                    <li>Nombre del colaborador 1</li>
+                    <li>Nombre del colaborador 2</li>
+                    <li>Nombre del colaborador 3</li>
+                </ul>
             </div>
-          </div>
+
         </div>
-      </div>
-    </main>
-  </body>
+    </div>
+</main>
+</body>
 </html>

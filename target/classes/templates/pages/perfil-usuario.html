@@ -34,46 +34,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">Proyectos</h2>
-                        <div class="mb-3">
-                            <label for="filtro-titulo" class="form-label"
-                            >Filtrar por título:</label
-                            >
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    id="filtro-titulo"
-                                    placeholder="Ingrese el título del proyecto"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="filtro-lenguaje" class="form-label"
-                            >Filtrar por lenguaje:</label
-                            >
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary">
-                                    Python
-                                </button>
-                                <button type="button" class="btn btn-secondary">
-                                    Java
-                                </button>
-                                <button type="button" class="btn btn-secondary">
-                                    JavaScript
-                                </button>
-                            </div>
-                        </div>
-                        <table class="table">
+
+                        <table class="table" id="tablaProyectos">
                             <thead>
                             <tr>
                                 <th>Título</th>
-                                <th>Lenguaje</th>
-                                <th>Fecha de publicación</th>
+                                <th>URL Proyecto</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Proyecto 1</td>
-                                <td>Python</td>
-                                <td>01/01/2021</td>
+
                             </tr>
                             </tbody>
                         </table>
@@ -84,7 +58,8 @@
         </div>
 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/UploadProfileProyects.js}"></script>
 </main>
 </body>
 </html>

@@ -8,7 +8,6 @@ public interface IProyectosService {
 
     List<Proyecto> findAll();
 
-
     public Proyecto save(Proyecto proyecto);
 
     public Proyecto findById(Integer id);

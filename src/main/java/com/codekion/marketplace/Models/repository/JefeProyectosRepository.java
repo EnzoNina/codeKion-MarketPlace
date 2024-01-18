@@ -4,7 +4,7 @@ import com.codekion.marketplace.Models.entity.JefeProyectoProyecto;
 import com.codekion.marketplace.Models.entity.JefeProyectoProyectoId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IJefeProyectosRepository extends JpaRepository<JefeProyectoProyecto, JefeProyectoProyectoId> {
+public interface JefeProyectosRepository extends JpaRepository<JefeProyectoProyecto, JefeProyectoProyectoId> {
 
 
 }
