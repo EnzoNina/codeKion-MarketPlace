@@ -1,17 +1,14 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Models.service.IService.IProyectoHabilidades;
-import com.codekion.marketplace.Models.service.IService.IProyecto_Sub_CategoriaService;
-import com.codekion.marketplace.Models.service.IService.IProyectosService;
-import com.codekion.marketplace.Models.service.IService.ISubCategoriaService;
+import com.codekion.marketplace.Models.service.IService.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @Controller
@@ -28,6 +25,9 @@ public class HomeController {
 
     @Autowired
     private IProyecto_Sub_CategoriaService proyectoSubCategoriaService;
+
+    @Autowired
+    private IColabores_ProyectosService colaboradoresProyectosService;
 
     @GetMapping("/")
     public String index() {
@@ -70,10 +70,12 @@ public class HomeController {
         Proyecto proyecto = proyectosService.findById(id);
         List<ProyectosHabilidade> lstProyectosHabilidades = proyectoHabilidadesService.findAllByProyecto(proyecto);
         List<ProyectoSubCategoria> lstProyectoSubCategoria = proyectoSubCategoriaService.findAllByProyecto(proyecto);
+        List<ColaboradoresProyecto> lstColaboresProyectos = colaboradoresProyectosService.findAllByIdProyecto(proyecto);
         model.addAttribute("proyectoHabilidades", lstProyectosHabilidades);
         model.addAttribute("lstProyectSubCategoria", lstProyectoSubCategoria);
+        model.addAttribute("lstColaboresProyectos", lstColaboresProyectos);
         model.addAttribute("proyecto", proyecto);
+        //Falta agregar a los colaboradores
         return "pages/perfil-proyecto";
     }
-
 }

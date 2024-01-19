@@ -61,13 +61,12 @@ public class ColaboradoresController {
         return "pages/buscarColaboradores";
     }
 
-    @PostMapping("/Buscarcolaboradores")
+    /*@PostMapping("/Buscarcolaboradores")
     public String enviarSolicitud(@RequestParam("userId") Integer userId,@RequestParam("proyecto") Proyecto proyecto) {
         Usuario user = usuarioService.findById(userId);
         solicitudColaboradoresService.enviarSolicitud(proyecto,user);
         return "redirect:/home";
-    }
-
+    }*/
 
     // Método para construir la lista final de UsuarioInfoDto
     private List<UsuarioInfoDto> buildUsuarioInfoList(Map<Usuario, List<Habilidade>> usuarioHabilidadesMap, Map<Usuario, List<SubCategoria>> usuarioSubCategoriasMap) {

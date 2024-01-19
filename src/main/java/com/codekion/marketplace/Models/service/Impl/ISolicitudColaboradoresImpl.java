@@ -8,11 +8,18 @@ import com.codekion.marketplace.Models.service.IService.ISolicitudColaboradoresS
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ISolicitudColaboradoresImpl implements ISolicitudColaboradoresService {
 
     @Autowired
     private SolicitudColaboradoresRepository solicitudColaboradoresRepository;
+
+    @Override
+    public List<SolicitudesColaboradore> getByEstado(Usuario usuario) {
+        return solicitudColaboradoresRepository.findByIdUsuarioAndEstadoSolicitud(usuario,false);
+    }
 
     @Override
     public void enviarSolicitud(Proyecto idProyecto, Usuario idUsuario) {

@@ -47,7 +47,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form th:action="@{/Buscarcolaboradores}" method="post">
+            <form th:action="@{/solicitudes/Buscarcolaboradores}" method="post">
                 <input type="hidden" id="userInput" name="userId" />
                 <div class="modal-body">
                         <select id="proyecto" name="proyecto"  class="form-control">
@@ -62,11 +62,7 @@
         </div>
     </div>
 </div>
-
-<!-- JavaScript para cargar la lista de proyectos -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div th:insert="~{fragments/scripts :: footer}"></div>
 <script th:src="@{/js/buscarColaboradores.js}"></script>
 </body>
 </html>
