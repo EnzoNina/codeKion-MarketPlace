@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Categorias</h2>
-                    <form th:action="@{/postForm}" method="post">
+                    <form th:action="@{/registrarPostForm}" method="post">
                         <label>Categorías:</label>
                         <div th:each="subcategoria : ${subcategorias}">
                             <input type="checkbox" id="subcategoria-[[${subcategoria.id}]]" name="subcategorias" th:value="${subcategoria.id}" />

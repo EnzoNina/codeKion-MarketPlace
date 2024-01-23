@@ -458,8 +458,13 @@
     <inspection_tool class="AndroidUnresolvableTag" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AndroidUnresolvedRoomSqlReference" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AngularAmbiguousComponentTag" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="AngularBindingTypeMismatch" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="AngularCliAddDependency" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AngularDeferBlockOnTrigger" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="AngularForBlockNonIterableVar" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="AngularInaccessibleComponentMemberInAotMode" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AngularInaccessibleSymbol" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="AngularIncorrectBlockUsage" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="AngularIncorrectTemplateDefinition" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AngularInsecureBindingToEvent" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AngularInvalidAnimationTriggerAssignment" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -474,6 +479,7 @@
     <inspection_tool class="AngularMultipleStructuralDirectives" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AngularNgOptimizedImage" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="AngularNonEmptyNgContent" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="AngularNonStandaloneComponentImports" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="AngularRecursiveModuleImportExport" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AngularUndefinedBinding" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AngularUndefinedModuleExport" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -784,6 +790,8 @@
     <inspection_tool class="CssDeprecatedValue" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="CssInvalidAtRule" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="CssInvalidCharsetRule" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="CssInvalidCustomPropertyAtRuleDeclaration" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="CssInvalidCustomPropertyAtRuleName" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="CssInvalidFunction" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="CssInvalidHtmlTagReference" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CssInvalidImport" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1028,6 +1036,7 @@
     <inspection_tool class="FieldNotUsedInToString" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FileEqualsUsage" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FillPermitsList" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="FilterIsInstanceCallWithClassLiteralArgument" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="FinalClass" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FinalMethod" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FinalMethodInFinalClass" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1215,8 +1224,12 @@
     <inspection_tool class="HardwiredNamespacePrefix" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HasPlatformType" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="HashCodeUsesNonFinalVariable" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HelmChartMissingKeys" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="HelmChartUnknownKeys" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HelmChartUnknownValues" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="HibernateConfigDomFacetInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HibernateConfigDomInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="HibernateFindAnnotationInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="HibernateMappingDatasourceDomInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="HibernateMappingDomInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="HibernateResource" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1260,6 +1273,7 @@
     </inspection_tool>
     <inspection_tool class="HtmlUnknownTarget" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HtmlWrongAttributeValue" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HttpClientUnresolvedAuthId" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="HttpClientUnresolvedVariable" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HttpRequestContentLengthIsIgnored" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HttpRequestPlaceholder" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1548,7 +1562,17 @@
     <inspection_tool class="KotlinUnusedImport" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="KtorOpenAPIUpdate" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="KtorOpenApi" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="KtorOpenApiUpdate" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="KtorYamlConfig" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="KubernetesDeprecatedKeys" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="KubernetesDeprecatedResources" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="KubernetesDuplicatedEnvVars" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="KubernetesMissingKeys" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="KubernetesNonEditableKeys" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="KubernetesNonEditableResources" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="KubernetesUnknownKeys" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="KubernetesUnknownResourcesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="KubernetesUnknownValues" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="LabeledStatement" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LabeledStatementJS" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LambdaBodyCanBeCodeBlock" enabled="true" level="INFORMATION" enabled_by_default="true" />
@@ -1593,6 +1617,7 @@
     <inspection_tool class="LoggingStringTemplateAsArgument" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="Lombok" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LombokGetterMayBeUsed" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="LombokSetterMayBeUsed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LongLine" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LongLiteralsEndingWithLowercaseL" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LongText" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1702,6 +1727,7 @@
     <inspection_tool class="MisspelledHeader" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="MisspelledMethodName" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MnCacheAnnotationParameters" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="MnELInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MnInjectionPoints" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MnPropertiesConfig" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MnUnresolvedPathVariable" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1812,6 +1838,7 @@
     <inspection_tool class="NotifyCalledOnCondition" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NotifyWithoutCorrespondingWait" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NpmUsedModulesInstalled" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="NpmVulnerableApiCode" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NullArgumentToVariableArgMethod" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NullChecksToSafeCall" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NullThrown" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -2030,6 +2057,7 @@
     <inspection_tool class="RedundantConstructorKeyword" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="RedundantElseInIf" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="RedundantElvisReturnNull" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="RedundantEmbeddedExpression" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="RedundantEmptyInitializerBlock" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="RedundantEnumConstructorInvocation" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="RedundantEscapeInRegexReplacement" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2204,6 +2232,7 @@
     <inspection_tool class="SelfAssignment" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SelfIncludingJspFiles" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SelfReferenceConstructorParameter" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SequencedCollectionMethodCanBeUsed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SerialAnnotationUsedOnWrongMember" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SerialPersistentFieldsWithWrongSignature" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SerialVersionUIDNotStaticFinal" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2326,15 +2355,18 @@
     <inspection_tool class="SpringQualifierCopyableLombok" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringRequiredAnnotationInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpringRequiredPropertyInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="SpringScheduledMethodsInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SpringScopesInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpringSecurityAnnotationBeanPointersResolveInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpringSecurityDebugActivatedInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringSecurityModelInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="SpringSecurityPreFilterMethodCallsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SpringTestingDirtiesContextInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringTestingSqlInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringTestingTransactionalInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringTransactionalComponentInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpringTransactionalMethodCallsInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SpringWebSocketConfigurationInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SpringXmlAutowireExplicitlyInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SpringXmlAutowiringInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpringXmlModelInspection" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -2427,6 +2459,7 @@
     <inspection_tool class="StringOperationCanBeSimplified" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="StringRepeatCanBeUsed" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="StringReplaceableByStringBuffer" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="StringTemplateMigration" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="StringToUpperWithoutLocale" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="StringTokenizer" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="StringTokenizerDelimiter" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2495,6 +2528,7 @@
     <inspection_tool class="SynchronizedOnLiteralObject" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SystemExit" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SystemGC" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="SystemGetProperty" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SystemGetenv" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SystemOutErr" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SystemProperties" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -2851,6 +2885,7 @@
     <inspection_tool class="com.haulmont.jpb.SpringDataModifyingAnnotationMissing" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="com.haulmont.jpb.SpringDataPageableParameterMissing" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="com.haulmont.jpb.UnsupportedTypeWithoutConverterInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="com.haulmont.jpb.inspection.DuplicateChangesetId" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="dependsOnMethodTestNG" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="groups">

@@ -29,4 +29,14 @@ public class Proyecto {
     @Column(name = "estado_proyecto", nullable = false)
     private String estadoProyecto;
 
+    @Override
+    public String toString() {
+        return "Proyecto{" +
+                "id=" + id +
+                ", nombreProyecto='" + nombreProyecto + '\'' +
+                ", urlProyecto='" + urlProyecto + '\'' +
+                ", descripcionProyecto='" + descripcionProyecto + '\'' +
+                ", estadoProyecto='" + estadoProyecto + '\'' +
+                '}';
+    }
 }

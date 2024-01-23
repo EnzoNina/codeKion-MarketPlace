@@ -5,6 +5,7 @@ import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Models.service.IService.ISolicitudColaboradoresService;
 import com.codekion.marketplace.Models.service.IService.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -18,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/solicitudes")
+@RequestMapping("/notificaciones")
 public class SolicitudesController {
 
     @Autowired
@@ -29,30 +30,18 @@ public class SolicitudesController {
 
     @Autowired
     private IUsuarioService usuarioService;
-    // Lista de usuarios conectados
-    private Set<String> connectedUsers = new HashSet<>();
 
     @PostMapping("/Buscarcolaboradores")
-    public ResponseEntity<String> enviarSolicitudColaboracion(@RequestParam("userId") Integer userId, @RequestParam("proyecto") Proyecto proyecto) {
+    public String enviarSolicitudColaboracion(@RequestParam("userId") Integer userId, @RequestParam("proyecto") Proyecto proyecto) {
         Usuario usuario = usuarioService.findById(userId);
+        System.out.println("Usuario a enviar solicitud: " + usuario.getUser());
         // Envía una notificación a través de WebSocket
-        enviarNotificacionGlobal(usuario);
-        solicitudColaboracionService.enviarSolicitud(proyecto, usuario);
-        return ResponseEntity.ok("Solicitud enviada con éxito");
-    }
-
-    @MessageMapping("/chat/notificaciones")
-    public void enviarNotificacion(Usuario principal) {
-        // Lógica para manejar solicitudes WebSocket
-        messagingTemplate.convertAndSendToUser(principal.getId().toString(), "/chat/notificaciones", "Tiene una nueva solicitud de colaboración");
-    }
-    @MessageMapping("/chat/notificacion-global")
-    public void enviarNotificacionGlobal(Usuario principal) {
-        String username = principal.getNombre();
-        // Verifica si el usuario ya está en la lista de conectados
-        if (connectedUsers.add(username)) {
-            // Envía notificación a todos los usuarios conectados
-            messagingTemplate.convertAndSend("/topic/notificacion-global", "Nueva notificación global de " + username);
+        try {
+            solicitudColaboracionService.enviarSolicitud(proyecto, usuario);
+            messagingTemplate.convertAndSendToUser(usuario.getUser(), "/topic/notificaciones", "Fue invitado para unirse como colaborador al proyecto: " + proyecto.getNombreProyecto());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
         }
+        return "pages/buscarColaboradores";
     }
 }

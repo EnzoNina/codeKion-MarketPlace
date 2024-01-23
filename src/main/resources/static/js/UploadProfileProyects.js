@@ -6,10 +6,15 @@ $.ajax({
     success: function (data) {
         var TablaproyectosSelect = $("#tablaProyectos tbody");
         TablaproyectosSelect.empty();
-        $.each(data, function (index, proyecto) {
-            var fila = "<tr><td>" + proyecto.nombreProyecto + "</td><td>" + proyecto.urlProyecto + "</td><td>" + proyecto.descripcionProyecto + "</td><td>" + proyecto.estadoProyecto + "</td><td><a href='/perfilProyecto/" + proyecto.id + "'>Ver perfil</a></td></tr>";
-            TablaproyectosSelect.append(fila);
-        });
+
+        if (data.length === 0) {
+            TablaproyectosSelect.after("<p>No hay proyectos disponibles</p>")
+        } else {
+            $.each(data, function (index, proyecto) {
+                var fila = "<tr><td>" + proyecto.nombreProyecto + "</td><td>" + proyecto.urlProyecto + "</td><td>" + proyecto.descripcionProyecto + "</td><td>" + proyecto.estadoProyecto + "</td><td><a href='/perfilProyecto/" + proyecto.id + "'>Ver perfil</a></td></tr>";
+                TablaproyectosSelect.append(fila);
+            });
+        }
     },
     error: function (error) {
         console.error("Hubo un error al cargar los proyectos", error);

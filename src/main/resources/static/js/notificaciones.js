@@ -1,24 +1,15 @@
-//var socket = new SockJS('/ws');
-//var stompClient = Stomp.over(socket);
+var notificationSocket = new SockJS('/ws');
+var stompClient = Stomp.over(notificationSocket);
 
-//stompClient.connect({}, function (frame) {
-//    console.log('Connected: ' + frame);
-    // Suscribe al usuario al canal de notificaciones
-//  stompClient.subscribe('/user/chat/notificaciones', function (notification) {
-        // Muestra la notificación en la interfaz del usuario
-  //      console.log(notification.body);
-    //    alert("Nueva notificación: " + notification.body);
-    //});
-//});
+stompClient.connect({}, function (frame) {
+    console.log('Connected to notifications: ' + frame);
 
-var globalNotificationSocket = new SockJS('/ws');
-var globalNotificationStompClient = Stomp.over(globalNotificationSocket);
-
-globalNotificationStompClient.connect({}, function (frame) {
-    console.log('Connected to global notification: ' + frame);
-
-    globalNotificationStompClient.subscribe('/topic/notificacion-global', function (notification) {
-        // Maneja la notificación global recibida en el cliente
-        alert("Nueva notificación global: " + notification.body);
+    stompClient.subscribe('/topic/notificaciones', function (notificacion) {
+        // Maneja la notificación recibida en el cliente
+        alert("Nueva notificación: " + notificacion.body);
+        console.log(notificacion.body);
     });
-});
+},errorCallback);
+function errorCallback(error) {
+    console.error('Error durante la suscripción: ' + error);
+}

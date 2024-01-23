@@ -11,6 +11,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Usuario {
     @Id
     @Column(name = "id_usuario", nullable = false)
@@ -31,25 +33,13 @@ public class Usuario {
     @Column(name = "correo", nullable = false, length = 40)
     private String correo;
 
-    @Column(name = "user", nullable = false, length = 20)
+    @Column(name = "user", nullable = false)
     @NotEmpty
     private String user;
 
-    @Column(name = "pass", nullable = false, length = 20)
+    @Column(name = "pass", nullable = false)
     @NotEmpty
     private String pass;
-
-    public Usuario() {
-    }
-
-    public Usuario(Integer id, String nombre, String apellido, String correo, String user, String pass) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.user = user;
-        this.pass = pass;
-    }
 
     public Integer getId() {
         return id;
@@ -100,18 +90,14 @@ public class Usuario {
     }
 
     @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-        if (thisEffectiveClass != oEffectiveClass) return false;
-        Usuario usuario = (Usuario) o;
-        return getId() != null && Objects.equals(getId(), usuario.getId());
-    }
-
-    @Override
-    public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", correo='" + correo + '\'' +
+                ", user='" + user + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
     }
 }

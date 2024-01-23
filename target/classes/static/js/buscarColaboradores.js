@@ -13,14 +13,18 @@ $.ajax({
     type: "GET",
     dataType: "json",
     success: function (data) {
-        // Verifica los datos recibidos en la consola
-        console.log("Proyectos recibidos:", data);
         // Actualiza el contenido del select con los proyectos
         var proyectosSelect = $("#proyecto");
         proyectosSelect.empty();
-        $.each(data, function (index, proyecto) {
-            proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");
-        });
+        console.log(data);
+
+        if (data.length === 0) {
+            proyectosSelect.after("<p>No hay proyectos disponibles</p>")
+        } else {
+            $.each(data, function (index, proyecto) {
+                proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");
+            });
+        }
     },
     error: function (error) {
         console.error("Error al obtener proyectos:", error);

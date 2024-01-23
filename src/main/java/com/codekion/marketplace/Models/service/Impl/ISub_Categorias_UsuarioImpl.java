@@ -4,6 +4,8 @@ import com.codekion.marketplace.Models.entity.*;
 import com.codekion.marketplace.Models.repository.SubCategoriaRepository;
 import com.codekion.marketplace.Models.repository.UsuariosSubCategoriasRepository;
 import com.codekion.marketplace.Models.service.IService.ISub_Categorias_UsuariosService;
+import com.codekion.marketplace.Models.service.IService.IUsuarioService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Service
 public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosService {
+
+    @Autowired
+    private IUsuarioService usuarioService;
 
     @Autowired
     private UsuariosSubCategoriasRepository usuariosSubCategoriasRepository;
@@ -29,10 +34,12 @@ public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosServ
     @Transactional
     public void saveCategoriasUsuarios(Usuario usuario, List<SubCategoria> lstsubCategorias) {
 
+        Usuario originalUsuario = usuarioService.findByUser(usuario.getUser());
+
         for (SubCategoria subCategoria : lstsubCategorias) {
             UsuarioSubCategoria usuarioSubCategoria = new UsuarioSubCategoria();
-            usuarioSubCategoria.setId(new UsuarioSubCategoriaId(usuario.getId(), subCategoria.getId()));
-            usuarioSubCategoria.setIdUsuario(usuario);
+            usuarioSubCategoria.setId(new UsuarioSubCategoriaId(originalUsuario.getId(), subCategoria.getId()));
+            usuarioSubCategoria.setIdUsuario(originalUsuario);
             usuarioSubCategoria.setIdSubCategoria(subCategoria);
             usuariosSubCategoriasRepository.save(usuarioSubCategoria);
         }

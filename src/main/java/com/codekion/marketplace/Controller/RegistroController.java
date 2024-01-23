@@ -1,17 +1,14 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Models.repository.HabilidadesUsuariosRepository;
-import com.codekion.marketplace.Models.repository.UsuarioRepository;
-import com.codekion.marketplace.Models.repository.UsuariosSubCategoriasRepository;
 import com.codekion.marketplace.Models.service.IService.*;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -47,7 +44,6 @@ public class RegistroController {
     @PostMapping("/login")
     public String loginPost(@RequestParam String user, @RequestParam String pass, HttpSession session) {
         Usuario usuario = usuarioService.findByUserAndPass(user, pass);
-
         if (usuario != null) {
             session.setAttribute("usuario", usuario);
             return "redirect:/home";
@@ -65,12 +61,12 @@ public class RegistroController {
     }
 
     @PostMapping("/registrar")
-    public String registrarPost(@Valid Usuario usuario, BindingResult result, Model model) {
+    public String registrarPost(@Valid Usuario usuario, BindingResult result, Model model, HttpSession session) {
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Registrar de Usuario");
             return "redirect:/";
         }
-
+        session.setAttribute("usuarioRegister", usuario);
         return "redirect:/postForm";
     }
 
@@ -84,16 +80,13 @@ public class RegistroController {
         return "pages/postForm";
     }
 
-    @PostMapping("/postForm")
-    public String postForm(@RequestParam("idProyecto") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
+    @PostMapping("/registrarPostForm")
+    public String postForm(@RequestParam("habilidades") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
                            HttpSession session) {
-
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        Usuario usuario = (Usuario) session.getAttribute("usuarioRegister");
         List<Habilidade> lstHabilidades = habilidadesService.findByIds(habilidadesiD);
         List<SubCategoria> lstSubCategorias = subCategoriaService.findByIds(subCategoriasIds);
-
         usuarioService.save(usuario);
-
         subCategoriasUsuariosService.saveCategoriasUsuarios(usuario, lstSubCategorias);
         habilidadesUsuariosService.saveHabilidadesUsuarios(usuario, lstHabilidades);
 
