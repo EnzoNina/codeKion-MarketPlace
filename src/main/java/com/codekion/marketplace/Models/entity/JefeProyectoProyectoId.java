@@ -2,7 +2,9 @@ package com.codekion.marketplace.Models.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
@@ -19,6 +21,14 @@ public class JefeProyectoProyectoId implements Serializable {
 
     @Column(name = "id_proyecto", nullable = false)
     private Integer idProyecto;
+
+    public JefeProyectoProyectoId() {
+    }
+
+    public JefeProyectoProyectoId(Integer idJefeProyecto, Integer idProyecto) {
+        this.idJefeProyecto = idJefeProyecto;
+        this.idProyecto = idProyecto;
+    }
 
     @Override
     public boolean equals(Object o) {

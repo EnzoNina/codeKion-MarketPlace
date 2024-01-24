@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface ISolicitudColaboradoresService {
 
-    List<SolicitudesColaboradore> getByEstado(Usuario usuario);
+    List<SolicitudesColaboradore> findByIdUsuarioAndEstadoSolicitud(Usuario usuario);
+
     void enviarSolicitud(Proyecto idProyecto, Usuario idUsuario);
 
 }

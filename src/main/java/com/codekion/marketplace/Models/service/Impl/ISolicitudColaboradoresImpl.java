@@ -17,7 +17,7 @@ public class ISolicitudColaboradoresImpl implements ISolicitudColaboradoresServi
     private SolicitudColaboradoresRepository solicitudColaboradoresRepository;
 
     @Override
-    public List<SolicitudesColaboradore> getByEstado(Usuario usuario) {
+    public List<SolicitudesColaboradore> findByIdUsuarioAndEstadoSolicitud(Usuario usuario) {
         return solicitudColaboradoresRepository.findByIdUsuarioAndEstadoSolicitud(usuario,false);
     }
 

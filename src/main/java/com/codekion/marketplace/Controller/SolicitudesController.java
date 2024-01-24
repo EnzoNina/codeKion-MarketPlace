@@ -1,9 +1,11 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.Proyecto;
+import com.codekion.marketplace.Models.entity.SolicitudesColaboradore;
 import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Models.service.IService.ISolicitudColaboradoresService;
 import com.codekion.marketplace.Models.service.IService.IUsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +13,19 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
 @RequestMapping("/notificaciones")
 public class SolicitudesController {
+
+    private HttpSession session;
+
+    Usuario usuarioSession = (Usuario) session.getAttribute("usuario");
 
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
@@ -44,4 +49,11 @@ public class SolicitudesController {
         }
         return "pages/buscarColaboradores";
     }
+
+    @GetMapping("/getNotificaciones")
+    @ResponseBody
+    public List<SolicitudesColaboradore> getNotificaciones(@RequestParam("userId") Integer userId) {
+        return solicitudColaboracionService.findByIdUsuarioAndEstadoSolicitud(usuarioSession);
+    }
+
 }
