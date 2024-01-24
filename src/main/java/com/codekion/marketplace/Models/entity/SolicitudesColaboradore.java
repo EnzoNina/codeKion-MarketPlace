@@ -25,4 +25,12 @@ public class SolicitudesColaboradore {
     @Column(name = "estado_solicitud", nullable = true)
     private Boolean estadoSolicitud = false;
 
+    public SolicitudesColaboradore() {
+    }
+
+    public SolicitudesColaboradore(Proyecto idProyecto, Usuario idUsuario, Boolean estadoSolicitud) {
+        this.idProyecto = idProyecto;
+        this.idUsuario = idUsuario;
+        this.estadoSolicitud = estadoSolicitud;
+    }
 }

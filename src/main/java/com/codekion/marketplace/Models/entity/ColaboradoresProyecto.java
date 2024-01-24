@@ -22,4 +22,13 @@ public class ColaboradoresProyecto {
     @JoinColumn(name = "id_colaborador", nullable = false)
     private Colaboradore idColaborador;
 
+    //Constructores
+    public ColaboradoresProyecto() {
+    }
+
+    public ColaboradoresProyecto(ColaboradoresProyectoId id, Proyecto idProyecto, Colaboradore idColaborador) {
+        this.id = id;
+        this.idProyecto = idProyecto;
+        this.idColaborador = idColaborador;
+    }
 }

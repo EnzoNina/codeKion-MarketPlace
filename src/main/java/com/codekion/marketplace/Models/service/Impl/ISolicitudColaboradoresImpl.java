@@ -17,15 +17,17 @@ public class ISolicitudColaboradoresImpl implements ISolicitudColaboradoresServi
     private SolicitudColaboradoresRepository solicitudColaboradoresRepository;
 
     @Override
-    public List<SolicitudesColaboradore> findByIdUsuarioAndEstadoSolicitud(Usuario usuario) {
-        return solicitudColaboradoresRepository.findByIdUsuarioAndEstadoSolicitud(usuario,false);
+    public SolicitudesColaboradore findById(Integer id) {
+        return solicitudColaboradoresRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void enviarSolicitud(Proyecto idProyecto, Usuario idUsuario) {
-        SolicitudesColaboradore solicitud = new SolicitudesColaboradore();
-        solicitud.setIdProyecto(idProyecto);
-        solicitud.setIdUsuario(idUsuario);
-        solicitudColaboradoresRepository.save(solicitud);
+    public List<SolicitudesColaboradore> findByIdUsuarioAndEstadoSolicitud(Usuario usuario) {
+        return solicitudColaboradoresRepository.findByIdUsuarioAndEstadoSolicitud(usuario, false);
+    }
+
+    @Override
+    public SolicitudesColaboradore save(SolicitudesColaboradore solicitud) {
+        return solicitudColaboradoresRepository.save(solicitud);
     }
 }

@@ -9,7 +9,8 @@ stompClient.connect({}, function (frame) {
         alert("Nueva notificación: " + notificacion.body);
         console.log(notificacion.body);
     });
-},errorCallback);
+}, errorCallback);
+
 function errorCallback(error) {
     console.error('Error durante la suscripción: ' + error);
 }
@@ -30,7 +31,7 @@ $.ajax({
             notificaciones.after("<p>No hay proyectos disponibles</p>")
         } else {
             $.each(data, function (index, notificacion) {
-                var fila = "";
+                var fila = "<tr><td>" + notificacion.idProyecto.id + "</td><td>" + notificacion.idProyecto.nombreProyecto + "</td><td>" + notificacion.idProyecto.urlProyecto + "</td><td>" + notificacion.idProyecto.descripcionProyecto + "</td><td>" + notificacion.idProyecto.estadoProyecto + "</td><td><a href='/notificaciones/aceptarSolicitud/" + notificacion.id + "'>Aceptar solicitud</a></td></tr>";
                 notificaciones.append(fila);
             });
         }

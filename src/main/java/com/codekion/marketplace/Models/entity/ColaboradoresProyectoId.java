@@ -34,4 +34,11 @@ public class ColaboradoresProyectoId implements Serializable {
         return Objects.hash(idProyecto, idColaborador);
     }
 
+    //Constructores
+    public ColaboradoresProyectoId() {
+    }
+    public ColaboradoresProyectoId(Integer idProyecto, Integer idColaborador) {
+        this.idProyecto = idProyecto;
+        this.idColaborador = idColaborador;
+    }
 }

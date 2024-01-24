@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<div th:replace="~{fragments/head :: head}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 card">
+                <div class="card-body">
+                    <h2 class="card-title">Notificaciones</h2>
+                    <table class="table" id="tablaNotificaciones">
+                        <thead>
+                        <tr>
+                            <th>ID Proyecto</th>
+                            <th>Título Proyecto</th>
+                            <th>URL Proyecto</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<div th:insert="~{fragments/scripts :: footer}"></div>
+</body>
+</html>

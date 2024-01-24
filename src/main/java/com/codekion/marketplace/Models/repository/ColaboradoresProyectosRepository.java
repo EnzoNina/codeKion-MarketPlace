@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ColaboresProyectosRepository extends JpaRepository<ColaboradoresProyecto, ColaboradoresProyectoId> {
+public interface ColaboradoresProyectosRepository extends JpaRepository<ColaboradoresProyecto, ColaboradoresProyectoId> {
 
     List<ColaboradoresProyecto> findAllByIdProyecto(Proyecto proyecto);
 
