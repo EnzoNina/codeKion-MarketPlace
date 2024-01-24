@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,9 +21,6 @@ import java.util.Map;
 
 @Controller
 public class ProyectoController {
-
-    private HttpSession session;
-    Usuario usuario = (Usuario) session.getAttribute("usuario");
 
     @Autowired
     private IProyectosService proyectosService;
@@ -36,10 +34,8 @@ public class ProyectoController {
     //Se esta utilizando en buscarColaboradores.html en el script del ajax
     @GetMapping("/getProyectos")
     @ResponseBody
-    public List<Proyecto> getProyectos() {
-
-        List<Proyecto> lst = proyectosService.findByJefeProyecto(usuario.getId());
-        return lst;
+    public List<Proyecto> getProyectos(@ModelAttribute("usuario") Usuario usuario) {
+        return proyectosService.findByJefeProyecto(usuario.getId());
     }
 
     @GetMapping("/Crearproyecto")
@@ -49,7 +45,7 @@ public class ProyectoController {
     }
 
     @PostMapping("/Crearproyecto")
-    public String proyectoPost(@Valid Proyecto proyecto, Model model, BindingResult result) {
+    public String proyectoPost(@Valid Proyecto proyecto, Model model, BindingResult result, @ModelAttribute("usuario") Usuario usuario) {
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Error de Proyecto");
             return "redirect:/home";

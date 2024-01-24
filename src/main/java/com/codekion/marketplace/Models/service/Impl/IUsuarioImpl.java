@@ -33,13 +33,13 @@ public class IUsuarioImpl implements IUsuarioService {
 
     @Override
     public Usuario save(Usuario usuario) {
-        Usuario newUsuario = new Usuario();
-        newUsuario.setNombre(usuario.getNombre());
-        newUsuario.setApellido(usuario.getApellido());
-        newUsuario.setUser(usuario.getUser());
-        newUsuario.setCorreo(usuario.getCorreo());
-        newUsuario.setPass(WebSecurity.passwordEncoder.encode(usuario.getPass()));
-        return usuarioDao.save(newUsuario);
+        usuario.setPass(WebSecurity.passwordEncoder.encode(usuario.getPass()));
+        return usuarioDao.save(usuario);
+    }
+
+    @Override
+    public Usuario update(Usuario usuario) {
+        return usuarioDao.save(usuario);
     }
 
     @Override

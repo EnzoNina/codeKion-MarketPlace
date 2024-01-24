@@ -17,11 +17,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/notificaciones")
 public class SolicitudesController {
-
-    private HttpSession session;
-
-    Usuario usuarioSession = (Usuario) session.getAttribute("usuario");
-
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
@@ -58,8 +53,8 @@ public class SolicitudesController {
 
     @GetMapping("/getNotificaciones")
     @ResponseBody
-    public List<SolicitudesColaboradore> getNotificaciones(@RequestParam("userId") Integer userId) {
-        return solicitudColaboracionService.findByIdUsuarioAndEstadoSolicitud(usuarioSession);
+    public List<SolicitudesColaboradore> getNotificaciones(@ModelAttribute("usuario") Usuario usuario) {
+        return solicitudColaboracionService.findByIdUsuarioAndEstadoSolicitud(usuario);
     }
 
     @GetMapping("/aceptarSolicitud/{id}")

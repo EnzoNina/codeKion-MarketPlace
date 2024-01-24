@@ -12,6 +12,9 @@ public interface IUsuarioService extends UserDetailsService {
 
     public List<Usuario> findAll();
     public Usuario save(Usuario usuario);
+
+    public Usuario update(Usuario usuario);
+
     public Usuario findById(Integer id);
 
     Usuario findByUser(String user);

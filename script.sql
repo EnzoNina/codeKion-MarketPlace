@@ -265,7 +265,7 @@ CREATE TABLE `solicitudes_colaboradores` (
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `solicitudes_colaboradores_ibfk_1` FOREIGN KEY (`id_proyecto`) REFERENCES `proyectos` (`id_proyecto`),
   CONSTRAINT `solicitudes_colaboradores_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,6 +274,7 @@ CREATE TABLE `solicitudes_colaboradores` (
 
 LOCK TABLES `solicitudes_colaboradores` WRITE;
 /*!40000 ALTER TABLE `solicitudes_colaboradores` DISABLE KEYS */;
+INSERT INTO `solicitudes_colaboradores` VALUES (2,66,13,0),(3,66,13,0),(4,155,6,0),(5,122,6,0),(6,64,10,0);
 /*!40000 ALTER TABLE `solicitudes_colaboradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,9 +345,9 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(100) NOT NULL,
   `correo` varchar(40) NOT NULL,
   `user` varchar(20) NOT NULL,
-  `pass` varchar(20) NOT NULL,
+  `pass` varchar(200) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,7 +356,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (5,'Enzo Josue','Nina Aragon','ninaenzo70@gmail.com','enzo','enzo'),(6,'Juan','Pérez','juan@example.com','juanperez','passJuanPerez'),(7,'María','Gómez','maria@example.com','mariagomez','passMariaGomez'),(8,'Luis','Martínez','luis@example.com','luismartinez','passLuisMartinez'),(9,'Ana','Rodríguez','ana@example.com','anarodriguez','passAnaRodriguez'),(10,'Pedro','Sánchez','pedro@example.com','pedrosanchez','passPedroSanchez'),(11,'Laura','García','laura@example.com','lauragarcia','passLauraGarcia'),(12,'Carlos','López','carlos@example.com','carloslopez','passCarlosLopez'),(13,'Sofía','Hernández','sofia@example.com','sofiahernandez','passSofiaHernandez'),(14,'José','Torres','jose@example.com','josetorres','passJoseTorres'),(15,'Isabel','Díaz','isabel@example.com','isabeldiaz','passIsabelDiaz'),(16,'Fernando','Ruiz','fernando@example.com','fernandoruiz','passFernandoRuiz'),(17,'Elena','Vargas','elena@example.com','elenavargas','passElenaVargas'),(18,'Miguel','Flores','miguel@example.com','miguelflores','passMiguelFlores'),(19,'Carmen','Gutiérrez','carmen@example.com','carmengutierrez','passCarmenGutierrez'),(20,'Javier','Ortega','javier@example.com','javierortega','passJavierOrtega'),(21,'Lucía','Morales','lucia@example.com','luciamorales','passLuciaMorales'),(22,'Diego','Castro','diego@example.com','diegocastro','passDiegoCastro'),(23,'Paula','Soto','paula@example.com','paulasoto','passPaulaSoto'),(24,'Antonio','Cruz','antonio@example.com','antoniocruz','passAntonioCruz'),(25,'Andrea','Mendoza','andrea@example.com','andreamendoza','passAndreaMendoza');
+INSERT INTO `usuarios` VALUES (5,'Enzo Josue','Nina Aragon','ninaenzo70@gmail.com','enzo','$2a$10$epiRbangjAdeEE2alb8VDuXI.2gDZrm6DjsTNyjzho5Dd2bJfx7uC'),(6,'Juan','Pérez','juan@example.com','juanperez','$2a$10$7GZSOLDGOLlKBp.J/2X9Mua1R8Y3JbeXGLXPng1ipZquLhcKa49C6'),(7,'María','Gómez','maria@example.com','mariagomez','$2a$10$2Ok21qhGF5xY.iS6HgJ3vO8EA.gL5pyri9qmpRChZseJ1ugsyZ3n6'),(8,'Luis','Martínez','luis@example.com','luismartinez','$2a$10$qiqKB5CxBXjsMVhm7hfAM.I0fGc7BgLGM7yipMEqGDjvnGuhzWnLS'),(9,'Ana','Rodríguez','ana@example.com','anarodriguez','$2a$10$/BxmaC4aZE99FE3IANDISOgsUJdA0DeH/VHnuB8y2CbvRxWld8XNC'),(10,'Pedro','Sánchez','pedro@example.com','pedrosanchez','$2a$10$FLtzucPlQr4aIWZJGzNeFuYPUh2Mb6ORa1tiR/PiUHKjREdKczOfu'),(11,'Laura','García','laura@example.com','lauragarcia','$2a$10$sVhmhwN54xBX8/UtVcJvGuCrEgzbKa.u8UGvMgDMCJIkGuNJNPE/O'),(12,'Carlos','López','carlos@example.com','carloslopez','$2a$10$xYiwRuTqyTLtT5/20NEEIusalpk1.iWfgPCAe250KQPXNj3QLlt7i'),(13,'Sofía','Hernández','sofia@example.com','sofiahernandez','$2a$10$/z4x30H5dXODS1V7EgPP9OmdA4XXMzfyPV8QwwOL5aalrd/s3ruwK'),(14,'José','Torres','jose@example.com','josetorres','$2a$10$zEKFumkeR.1NrvZexS5C5uYhSRDV7mAuuORt3nt5QL0zmnxQtVBmS'),(15,'Isabel','Díaz','isabel@example.com','isabeldiaz','$2a$10$80dQO0VJfVP6EG42hkq1sOpTHr8omeU2grjyp8hcmALuynOq3Rc.y'),(16,'Fernando','Ruiz','fernando@example.com','fernandoruiz','$2a$10$QIsxqzx5IOTJRioS89bB3ObIJLvBxm9Xv/51hZ5TWLMDC5Rn/rvky'),(17,'Elena','Vargas','elena@example.com','elenavargas','$2a$10$amDkAeYhL7wJWaDunWNK4eSkzsdQ2qLifhCXuRUf8.OBwNPw/M8Dq'),(18,'Miguel','Flores','miguel@example.com','miguelflores','$2a$10$VOe4dxsM9uiFqTifmc/RYO6BTbp.TGl5cEhdu9xPizUdHDiwRH/gW'),(19,'Carmen','Gutiérrez','carmen@example.com','carmengutierrez','$2a$10$9EnbluZnPiOjMZr6at8cnONJk5Qc/XicGzB4MjSOSdLTyC77Ea/x6'),(20,'Javier','Ortega','javier@example.com','javierortega','$2a$10$Hjsh/bFTTGZw0QGABhlazOKiOmUb761/daurQstca16FOobvIJ/gm'),(21,'Lucía','Morales','lucia@example.com','luciamorales','$2a$10$IfNmvtNl/spK3G5hrBtmrOwhZa9lWfmninSIUIpZgQgqE3taT0r3y'),(22,'Diego','Castro','diego@example.com','diegocastro','$2a$10$FCUzyKfnE.zOeUimldw1DuZOgRi.eIODuaD.1k0dOS8WSysJjaw3q'),(23,'Paula','Soto','paula@example.com','paulasoto','$2a$10$G6Q53MrxBGhHVb/14wLnguQUQDHyXcuYo7I1hIduyXhc1qjqAdtF2'),(24,'Antonio','Cruz','antonio@example.com','antoniocruz','$2a$10$i0LYBnGEx3cz6TSvDVylbO.8/d1ZJf1b/.tzyaOPvrXVJ7Ogbnynm'),(25,'Andrea','Mendoza','andrea@example.com','andreamendoza','$2a$10$1aRUxGKaKoSrLC72gke2LeAdAHZ9WY6Pqm.FmUrv3fM.ZkXgEHtGy');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-15 18:03:49
+-- Dump completed on 2024-01-24 16:57:38

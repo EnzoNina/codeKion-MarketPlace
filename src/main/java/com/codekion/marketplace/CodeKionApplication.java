@@ -8,6 +8,7 @@ public class CodeKionApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CodeKionApplication.class, args);
+
     }
 
 }

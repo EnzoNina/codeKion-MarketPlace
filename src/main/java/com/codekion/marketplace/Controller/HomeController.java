@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -35,8 +36,7 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String home(Model model, HttpSession session) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+    public String home(Model model, @ModelAttribute("usuario") Usuario usuario) {
         if (usuario != null) {
 
             List<Proyecto> lstProyectos = proyectosService.findAll();
