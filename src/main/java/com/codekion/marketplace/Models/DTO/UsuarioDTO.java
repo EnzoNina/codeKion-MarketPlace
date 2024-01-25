@@ -12,6 +12,8 @@ public class UsuarioDTO {
 
     private Integer id;
     private String nombre;
-    private List<Habilidade> habilidades;
+    private String apellido;
+    private String correo;
+
 
 }

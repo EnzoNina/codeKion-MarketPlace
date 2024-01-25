@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface IColaboradoresService {
 
+    Colaboradore save(Colaboradore colaborador);
+
     Colaboradore findByUsuario(Usuario usuario);
 
     List<Colaboradore> findAll();

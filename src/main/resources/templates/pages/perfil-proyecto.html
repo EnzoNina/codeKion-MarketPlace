@@ -8,22 +8,38 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 card">
-                <h1 class="fw-bold mb-4" th:text="${proyecto.nombreProyecto}" >Título del proyecto</h1>
-                <p class="lead mb-4" th:text="${proyecto.descripcionProyecto}" >Descripción del proyecto</p>
+                <h1 class="fw-bold mb-4" th:text="${proyecto.nombreProyecto}">Título del proyecto</h1>
+                <p class="lead mb-4" th:text="${proyecto.descripcionProyecto}">Descripción del proyecto</p>
                 <h2 class="fw-bold mb-3">Categorias Del Proyecto</h2>
-                <ul class="list-unstyled mb-4" th:each="proyectoCategoria : ${lstProyectSubCategoria} " >
-                    <li th:text="${proyectoCategoria.idSubCategoria.nombreSubCategoria}" ></li>
+                <ul class="list-unstyled mb-4" th:each="proyectoCategoria : ${lstProyectSubCategoria} ">
+                    <li th:text="${proyectoCategoria.idSubCategoria.nombreSubCategoria}"></li>
                 </ul>
                 <h2 class="fw-bold mb-3">Habilidades Necesarias</h2>
-                <ul class="list-unstyled mb-4" th:each="ph :${proyectoHabilidades} " >
-                    <li th:text="${ph.idHabilidad.nombreHabilidad}" ></li>
+                <ul class="list-unstyled mb-4" th:each="ph :${proyectoHabilidades} ">
+                    <li th:text="${ph.idHabilidad.nombreHabilidad}"></li>
                 </ul>
                 <h2 class="fw-bold mb-3">Colaboradores</h2>
-                <ul class="list-unstyled mb-4">
-                    <li>Nombre del colaborador 1</li>
-                    <li>Nombre del colaborador 2</li>
-                    <li>Nombre del colaborador 3</li>
-                </ul>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre del colaborador</th>
+                        <th>Apellido del colaborador</th>
+                        <th>Correo del colaborador</th>
+                        <th>Acción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="colaborador : ${lstColaboresProyectos}">
+                        <td th:text="${colaborador.idColaborador.idUsuario.nombre}"></td>
+                        <td th:text="${colaborador.idColaborador.idUsuario.apellido}"></td>
+                        <td th:text="${colaborador.idColaborador.idUsuario.correo}"></td>
+                        <td>
+                            <!-- Cambiar a perfil{id} -->
+                            <a class="btn btn-primary" th:href="@{/perfil/usuario/{id}(id=${colaborador.idColaborador.idUsuario.id})}">Ver perfil</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>

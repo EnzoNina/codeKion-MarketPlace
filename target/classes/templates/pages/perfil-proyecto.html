@@ -19,11 +19,36 @@
                     <li th:text="${ph.idHabilidad.nombreHabilidad}" ></li>
                 </ul>
                 <h2 class="fw-bold mb-3">Colaboradores</h2>
-                <ul class="list-unstyled mb-4">
-                    <li>Nombre del colaborador 1</li>
-                    <li>Nombre del colaborador 2</li>
-                    <li>Nombre del colaborador 3</li>
-                </ul>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre de Usuario</th>
+                        <th>Habilidades</th>
+                        <th>Subcategorías</th>
+                        <th>Acción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
+                        <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="habilidad : ${usuarioInfoDto.habilidades}" th:text="${habilidad.nombreHabilidad}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
+                                    th:text="${subCategoria.nombreSubCategoria}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <!-- Botón para abrir el modal -->
+                            <button class="abrirModalBtn"  data-toggle="modal" data-target="#myModal" th:data-user="${usuarioInfoDto.usuario.id}" >Enviar Solicitud</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>

@@ -8,24 +8,24 @@ import java.util.List;
 
 public class UsuarioInfoDto {
 
-    private Usuario usuario;
+    private UsuarioDTO usuario;
     private List<Habilidade> habilidades;
     private List<SubCategoria> subCategorias;
 
     public UsuarioInfoDto() {
     }
 
-    public UsuarioInfoDto(Usuario usuario, List<Habilidade> habilidades, List<SubCategoria> subCategorias) {
+    public UsuarioInfoDto(UsuarioDTO usuario, List<Habilidade> habilidades, List<SubCategoria> subCategorias) {
         this.usuario = usuario;
         this.habilidades = habilidades;
         this.subCategorias = subCategorias;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 

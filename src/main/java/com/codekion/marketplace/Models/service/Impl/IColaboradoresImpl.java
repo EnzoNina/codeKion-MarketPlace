@@ -16,6 +16,11 @@ public class IColaboradoresImpl implements IColaboradoresService {
     private ColaboradoresRepository colaboradoresRepository;
 
     @Override
+    public Colaboradore save(Colaboradore colaborador) {
+        return colaboradoresRepository.save(colaborador);
+    }
+
+    @Override
     public Colaboradore findByUsuario(Usuario usuario) {
         return colaboradoresRepository.findByIdUsuario(usuario);
     }

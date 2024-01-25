@@ -1,5 +1,6 @@
 package com.codekion.marketplace.Models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,11 +15,11 @@ public class SolicitudesColaboradore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_proyecto", nullable = false)
     private Proyecto idProyecto;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
 
@@ -32,5 +33,15 @@ public class SolicitudesColaboradore {
         this.idProyecto = idProyecto;
         this.idUsuario = idUsuario;
         this.estadoSolicitud = estadoSolicitud;
+    }
+
+    @Override
+    public String toString() {
+        return "SolicitudesColaboradore{" +
+                "id=" + id +
+                ", idProyecto=" + idProyecto +
+                ", idUsuario=" + idUsuario +
+                ", estadoSolicitud=" + estadoSolicitud +
+                '}';
     }
 }

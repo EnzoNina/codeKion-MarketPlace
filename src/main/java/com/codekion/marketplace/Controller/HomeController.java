@@ -21,14 +21,6 @@ public class HomeController {
     @Autowired
     private ISubCategoriaService subCategoriaService;
 
-    @Autowired
-    private IProyectoHabilidades proyectoHabilidadesService;
-
-    @Autowired
-    private IProyecto_Sub_CategoriaService proyectoSubCategoriaService;
-
-    @Autowired
-    private IColabores_ProyectosService colaboradoresProyectosService;
 
     @GetMapping("/")
     public String index() {
@@ -60,22 +52,5 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/perfil")
-    public String irPerfil() {
-        return "pages/perfil-usuario";
-    }
 
-    @GetMapping("/perfilProyecto/{id}")
-    public String irProyectos(@PathVariable("id") Integer id, Model model) {
-        Proyecto proyecto = proyectosService.findById(id);
-        List<ProyectosHabilidade> lstProyectosHabilidades = proyectoHabilidadesService.findAllByProyecto(proyecto);
-        List<ProyectoSubCategoria> lstProyectoSubCategoria = proyectoSubCategoriaService.findAllByProyecto(proyecto);
-        List<ColaboradoresProyecto> lstColaboresProyectos = colaboradoresProyectosService.findAllByIdProyecto(proyecto);
-        model.addAttribute("proyectoHabilidades", lstProyectosHabilidades);
-        model.addAttribute("lstProyectSubCategoria", lstProyectoSubCategoria);
-        model.addAttribute("lstColaboresProyectos", lstColaboresProyectos);
-        model.addAttribute("proyecto", proyecto);
-        //Falta agregar a los colaboradores
-        return "pages/perfil-proyecto";
-    }
 }

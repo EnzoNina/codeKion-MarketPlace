@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: codekion
 -- ------------------------------------------------------
--- Server version	8.0.24
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,7 +52,7 @@ CREATE TABLE `colaboradores` (
   PRIMARY KEY (`id_colaborador`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `colaboradores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +61,7 @@ CREATE TABLE `colaboradores` (
 
 LOCK TABLES `colaboradores` WRITE;
 /*!40000 ALTER TABLE `colaboradores` DISABLE KEYS */;
+INSERT INTO `colaboradores` VALUES (1,6);
 /*!40000 ALTER TABLE `colaboradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,6 +88,7 @@ CREATE TABLE `colaboradores_proyectos` (
 
 LOCK TABLES `colaboradores_proyectos` WRITE;
 /*!40000 ALTER TABLE `colaboradores_proyectos` DISABLE KEYS */;
+INSERT INTO `colaboradores_proyectos` VALUES (155,1);
 /*!40000 ALTER TABLE `colaboradores_proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +276,7 @@ CREATE TABLE `solicitudes_colaboradores` (
 
 LOCK TABLES `solicitudes_colaboradores` WRITE;
 /*!40000 ALTER TABLE `solicitudes_colaboradores` DISABLE KEYS */;
-INSERT INTO `solicitudes_colaboradores` VALUES (2,66,13,0),(3,66,13,0),(4,155,6,0),(5,122,6,0),(6,64,10,0);
+INSERT INTO `solicitudes_colaboradores` VALUES (2,66,13,0),(3,66,13,0),(4,155,6,1),(5,122,6,0),(6,64,10,0);
 /*!40000 ALTER TABLE `solicitudes_colaboradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +398,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-24 16:57:38
+-- Dump completed on 2024-01-24 20:56:54
