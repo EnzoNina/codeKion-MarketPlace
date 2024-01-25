@@ -35,7 +35,7 @@
                         <td th:text="${colaborador.idColaborador.idUsuario.correo}"></td>
                         <td>
                             <!-- Cambiar a perfil{id} -->
-                            <a class="btn btn-primary" th:href="@{/perfil/usuario/{id}(id=${colaborador.idColaborador.idUsuario.id})}">Ver perfil</a>
+                            <a class="btn btn-primary" th:href="@{/perfil/{id}(id=${colaborador.idColaborador.idUsuario.id})}">Ver perfil</a>
                         </td>
                     </tr>
                     </tbody>

@@ -1,14 +1,14 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Models.service.IService.*;
+import com.codekion.marketplace.Service.IService.IProyectosService;
+import com.codekion.marketplace.Service.IService.ISubCategoriaService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

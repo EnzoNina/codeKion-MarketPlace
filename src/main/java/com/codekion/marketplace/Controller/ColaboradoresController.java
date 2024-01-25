@@ -1,12 +1,12 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.DTO.UsuarioDTO;
-import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesDTO;
+import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO;
 import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
 import com.codekion.marketplace.Models.entity.Habilidade;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
-import com.codekion.marketplace.Models.service.IService.IUsuarioService;
+import com.codekion.marketplace.Service.IService.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class ColaboradoresController {
     @GetMapping("/Buscarcolaboradores")
     public String buscarCreadores(Map<String, Object> model) {
         // Obtener la lista de todos los usuarios y habilidades
-        List<UsuarioHabilidadesDTO> lstUsuario = usuarioService.buscarUsuariosYHabilidades();
+        List<UsuarioHabilidadesCategoriasDTO> lstUsuario = usuarioService.buscarUsuariosYHabilidades();
 
         // Crear mapas utilizando los métodos separados
         Map<Usuario, List<Habilidade>> usuarioHabilidadesMap = buildUsuarioHabilidadesMap(lstUsuario);
@@ -38,10 +38,10 @@ public class ColaboradoresController {
     }
 
     // Método para construir el mapa de Usuario y Habilidades
-    private Map<Usuario, List<Habilidade>> buildUsuarioHabilidadesMap(List<UsuarioHabilidadesDTO> lstUsuario) {
+    private Map<Usuario, List<Habilidade>> buildUsuarioHabilidadesMap(List<UsuarioHabilidadesCategoriasDTO> lstUsuario) {
         Map<Usuario, List<Habilidade>> usuarioHabilidadesMap = new HashMap<>();
 
-        for (UsuarioHabilidadesDTO dto : lstUsuario) {
+        for (UsuarioHabilidadesCategoriasDTO dto : lstUsuario) {
             Usuario usuario = dto.getUsuario();
             Habilidade habilidad = dto.getHabilidades();
 
@@ -57,10 +57,10 @@ public class ColaboradoresController {
         return usuarioHabilidadesMap;
     }
 
-    private Map<Usuario, List<SubCategoria>> buildUsuarioSubCategoriasMap(List<UsuarioHabilidadesDTO> lstUsuario) {
+    private Map<Usuario, List<SubCategoria>> buildUsuarioSubCategoriasMap(List<UsuarioHabilidadesCategoriasDTO> lstUsuario) {
         Map<Usuario, List<SubCategoria>> usuarioSubCategoriasMap = new HashMap<>();
 
-        for (UsuarioHabilidadesDTO dto : lstUsuario) {
+        for (UsuarioHabilidadesCategoriasDTO dto : lstUsuario) {
             Usuario usuario = dto.getUsuario();
             SubCategoria subCategoria = dto.getSub_categoria();
 

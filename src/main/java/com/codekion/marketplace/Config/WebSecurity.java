@@ -1,7 +1,7 @@
 package com.codekion.marketplace.Config;
 
-import com.codekion.marketplace.Models.service.IService.IUsuarioService;
-import com.codekion.marketplace.security.CustomAuthenticationSuccessHandler;
+import com.codekion.marketplace.Service.IService.IUsuarioService;
+import com.codekion.marketplace.Security.CustomAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

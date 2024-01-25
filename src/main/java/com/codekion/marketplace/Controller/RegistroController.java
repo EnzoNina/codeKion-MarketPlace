@@ -1,9 +1,8 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Models.service.IService.*;
+import com.codekion.marketplace.Service.IService.*;
 import jakarta.servlet.http.HttpSession;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

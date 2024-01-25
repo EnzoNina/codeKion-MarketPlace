@@ -1,11 +1,10 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Models.service.IService.IColaboradoresService;
-import com.codekion.marketplace.Models.service.IService.IColabores_ProyectosService;
-import com.codekion.marketplace.Models.service.IService.ISolicitudColaboradoresService;
-import com.codekion.marketplace.Models.service.IService.IUsuarioService;
-import jakarta.servlet.http.HttpSession;
+import com.codekion.marketplace.Service.IService.IColaboradoresService;
+import com.codekion.marketplace.Service.IService.IColabores_ProyectosService;
+import com.codekion.marketplace.Service.IService.ISolicitudColaboradoresService;
+import com.codekion.marketplace.Service.IService.IUsuarioService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
