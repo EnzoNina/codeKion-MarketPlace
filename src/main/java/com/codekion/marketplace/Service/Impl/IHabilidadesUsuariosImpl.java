@@ -20,9 +20,6 @@ public class IHabilidadesUsuariosImpl implements IHabilidadesUsuariosService {
     private HabilidadesUsuariosRepository habilidadesUsuariosRepository;
 
     @Autowired
-    private HabilidadesRepository habilidadesRepository;
-
-    @Autowired
     private IUsuarioService usuarioService;
 
     @Override
@@ -30,17 +27,6 @@ public class IHabilidadesUsuariosImpl implements IHabilidadesUsuariosService {
         return habilidadesUsuariosRepository.findAll();
     }
 
-    @Override
-    public List<UsuariosHabilidade> findAllByIds(Usuario usuario, List<Integer> ids) {
-
-        List<Habilidade> lst = habilidadesRepository.findAll();
-
-        return lst.stream()
-                .filter(x -> ids.contains(x.getId()))
-                .map(x -> new UsuariosHabilidade(usuario, x))
-                .toList();
-
-    }
 
     @Override
     public void saveHabilidadesUsuarios(Usuario usuario, List<Habilidade> lstHabilidades) {

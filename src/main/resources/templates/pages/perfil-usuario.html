@@ -28,13 +28,13 @@
                         </ul>
                         <h2 class="card-title">Categorias de interes</h2>
                         <ul class="list-unstyled">
-                            <li th:each="categoria : ${lstCategorias}">
-                                <span th:text="${categoria.nombreCategoria}"></span>
+                            <li th:each="subCategoria : ${usuarioInfo.subCategorias}">
+                                <span th:text="${subCategoria.nombreSubCategoria}"></span>
                             </li>
                         </ul>
                         <h2 class="card-title">Habilidades</h2>
                         <ul class="list-unstyled">
-                            <li th:each="habilidad : ${lstHabilidades}">
+                            <li th:each="habilidad : ${usuarioInfo.habilidades}">
                                 <span th:text="${habilidad.nombreHabilidad}"></span>
                             </li>
                         </ul>

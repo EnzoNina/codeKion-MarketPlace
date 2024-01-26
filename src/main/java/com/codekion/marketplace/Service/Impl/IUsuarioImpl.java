@@ -2,6 +2,7 @@ package com.codekion.marketplace.Service.Impl;
 
 import com.codekion.marketplace.Config.WebSecurity;
 import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO;
+import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
 import com.codekion.marketplace.Repository.UsuarioRepository;
 import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Service.IService.IUsuarioService;
@@ -39,7 +40,6 @@ public class IUsuarioImpl implements IUsuarioService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("El username pasado es: " + username);
         Usuario usuario = usuarioDao.findByUser(username);
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario o password inválidos");
@@ -62,8 +62,4 @@ public class IUsuarioImpl implements IUsuarioService {
         return usuarioDao.buscarUsuariosYHabilidades();
     }
 
-    @Override
-    public List<UsuarioHabilidadesCategoriasDTO> UsuarioHabilidadesCategoriasDTOPorIdUsuario(Integer idUsuario) {
-        return usuarioDao.buscarUsuarioHabilidadesCategoriasDTOPorIdUsuario(idUsuario);
-    }
 }

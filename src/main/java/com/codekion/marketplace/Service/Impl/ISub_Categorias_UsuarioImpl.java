@@ -1,7 +1,6 @@
 package com.codekion.marketplace.Service.Impl;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Repository.SubCategoriaRepository;
 import com.codekion.marketplace.Repository.UsuariosSubCategoriasRepository;
 import com.codekion.marketplace.Service.IService.ISub_Categorias_UsuariosService;
 import com.codekion.marketplace.Service.IService.IUsuarioService;
@@ -19,9 +18,6 @@ public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosServ
 
     @Autowired
     private UsuariosSubCategoriasRepository usuariosSubCategoriasRepository;
-
-    @Autowired
-    private SubCategoriaRepository subCategoriaRepository;
 
     @Override
     public UsuarioSubCategoria findById(UsuarioSubCategoriaId idUsuario) {
@@ -45,15 +41,4 @@ public class ISub_Categorias_UsuarioImpl implements ISub_Categorias_UsuariosServ
 
     }
 
-    @Override
-    public List<UsuarioSubCategoria> findByIDs(Usuario usuario, List<Integer> subCategoriasIds) {
-
-        List<SubCategoria> lst = subCategoriaRepository.findAll();
-
-        return lst.stream()
-                .filter(x -> subCategoriasIds.contains(x.getId()))
-                .map(x -> new UsuarioSubCategoria(usuario, x))
-                .toList();
-
-    }
 }

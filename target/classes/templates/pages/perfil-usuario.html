@@ -15,15 +15,27 @@
                         <h2 class="card-title">Datos personales</h2>
                         <ul class="list-unstyled">
                             <li>
-                                <span class="fw-bold">Nombre:</span> <span th:text="${session.usuario.nombre}"></span>
+                                <span class="fw-bold">Nombre:</span> <span th:text="${usuario.nombre}"></span>
                             </li>
                             <li>
                                 <span class="fw-bold">Apellido:</span>
-                                <span th:text="${session.usuario.apellido}"></span>
+                                <span th:text="${usuario.apellido}"></span>
                             </li>
                             <li>
                                 <span class="fw-bold">Correo electrónico:</span>
-                                <span th:text="${session.usuario.correo}"></span>
+                                <span th:text="${usuario.correo}"></span>
+                            </li>
+                        </ul>
+                        <h2 class="card-title">Categorias de interes</h2>
+                        <ul class="list-unstyled">
+                            <li th:each="subCategoria : ${usuarioInfo.subCategorias}">
+                                <span th:text="${subCategoria.nombreSubCategoria}"></span>
+                            </li>
+                        </ul>
+                        <h2 class="card-title">Habilidades</h2>
+                        <ul class="list-unstyled">
+                            <li th:each="habilidad : ${usuarioInfo.habilidades}">
+                                <span th:text="${habilidad.nombreHabilidad}"></span>
                             </li>
                         </ul>
                     </div>

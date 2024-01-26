@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface ISubCategoriaService {
 
-    public List<SubCategoria> findAll();
+    List<SubCategoria> findAll();
 
-    public List<SubCategoria> findByIds(List<Integer> ids);
+    List<SubCategoria> findByIds(List<Integer> ids);
+
+    List<SubCategoria> findCategoriasByIdUsuario(Integer id);
 
 }

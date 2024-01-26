@@ -24,4 +24,9 @@ public class IHabilidadesImpl implements IHabilidadesService {
         List<Habilidade> lst = habilidadesRepository.findAll();
         return lst.stream().filter(x -> habilidadesiD.contains(x.getId())).toList();
     }
+
+    @Override
+    public List<Habilidade> findHabilidadesByIdUsuario(Integer idUsuario) {
+        return habilidadesRepository.findHabilidadesByIdUsuario(idUsuario);
+    }
 }

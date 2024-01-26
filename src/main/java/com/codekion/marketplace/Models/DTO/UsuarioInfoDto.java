@@ -21,6 +21,12 @@ public class UsuarioInfoDto {
         this.subCategorias = subCategorias;
     }
 
+    public UsuarioInfoDto(Usuario usuario, List<Habilidade> habilidades, List<SubCategoria> subCategorias) {
+        this.usuario = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getCorreo());
+        this.habilidades = habilidades;
+        this.subCategorias = subCategorias;
+    }
+
     public UsuarioDTO getUsuario() {
         return usuario;
     }

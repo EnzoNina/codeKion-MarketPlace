@@ -41,6 +41,14 @@ public class Usuario {
     @NotEmpty
     private String pass;
 
+    public Usuario(Integer id, String nombre, String apellido, String correo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+    }
+
+
     public Integer getId() {
         return id;
     }

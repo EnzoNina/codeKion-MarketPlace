@@ -8,43 +8,35 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 card">
-                <h1 class="fw-bold mb-4" th:text="${proyecto.nombreProyecto}" >Título del proyecto</h1>
-                <p class="lead mb-4" th:text="${proyecto.descripcionProyecto}" >Descripción del proyecto</p>
+                <h1 class="fw-bold mb-4" th:text="${proyecto.nombreProyecto}">Título del proyecto</h1>
+                <p class="lead mb-4" th:text="${proyecto.descripcionProyecto}">Descripción del proyecto</p>
                 <h2 class="fw-bold mb-3">Categorias Del Proyecto</h2>
-                <ul class="list-unstyled mb-4" th:each="proyectoCategoria : ${lstProyectSubCategoria} " >
-                    <li th:text="${proyectoCategoria.idSubCategoria.nombreSubCategoria}" ></li>
+                <ul class="list-unstyled mb-4" th:each="proyectoCategoria : ${lstProyectSubCategoria} ">
+                    <li th:text="${proyectoCategoria.idSubCategoria.nombreSubCategoria}"></li>
                 </ul>
                 <h2 class="fw-bold mb-3">Habilidades Necesarias</h2>
-                <ul class="list-unstyled mb-4" th:each="ph :${proyectoHabilidades} " >
-                    <li th:text="${ph.idHabilidad.nombreHabilidad}" ></li>
+                <ul class="list-unstyled mb-4" th:each="ph :${proyectoHabilidades} ">
+                    <li th:text="${ph.idHabilidad.nombreHabilidad}"></li>
                 </ul>
                 <h2 class="fw-bold mb-3">Colaboradores</h2>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Nombre de Usuario</th>
-                        <th>Habilidades</th>
-                        <th>Subcategorías</th>
+                        <th>Nombre del colaborador</th>
+                        <th>Apellido del colaborador</th>
+                        <th>Correo del colaborador</th>
                         <th>Acción</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
-                        <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
+                    <tr th:each="colaborador : ${lstColaboresProyectos}">
+                        <td th:text="${colaborador.idColaborador.idUsuario.nombre}"></td>
+                        <td th:text="${colaborador.idColaborador.idUsuario.apellido}"></td>
+                        <td th:text="${colaborador.idColaborador.idUsuario.correo}"></td>
                         <td>
-                            <ul>
-                                <li th:each="habilidad : ${usuarioInfoDto.habilidades}" th:text="${habilidad.nombreHabilidad}"></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
-                                    th:text="${subCategoria.nombreSubCategoria}"></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <!-- Botón para abrir el modal -->
-                            <button class="abrirModalBtn"  data-toggle="modal" data-target="#myModal" th:data-user="${usuarioInfoDto.usuario.id}" >Enviar Solicitud</button>
+                            <!-- Cambiar a perfil{id} -->
+                            <a class="btn btn-primary"
+                               th:href="@{/perfil/{id}(id=${colaborador.idColaborador.idUsuario.id})}">Ver perfil</a>
                         </td>
                     </tr>
                     </tbody>

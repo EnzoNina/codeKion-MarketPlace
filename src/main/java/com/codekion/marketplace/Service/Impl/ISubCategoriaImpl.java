@@ -25,4 +25,9 @@ public class ISubCategoriaImpl implements ISubCategoriaService {
         //return lstSCategorias.stream().filter(sub_categoria->ids.contains(sub_categoria.getId())).toList();
         return subCategoriaRepository.findByIdIn(ids);
     }
+
+    @Override
+    public List<SubCategoria> findCategoriasByIdUsuario(Integer id) {
+        return subCategoriaRepository.findCategoriasByIdUsuario(id);
+    }
 }
