@@ -1,6 +1,7 @@
 package com.codekion.marketplace.Service.Impl;
 
 import com.codekion.marketplace.Models.entity.JefeProyecto;
+import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Repository.JefeProyectosRepository;
 import com.codekion.marketplace.Service.IService.IJefeProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class IJefeProyectoImpl implements IJefeProyectoService {
     @Override
     public JefeProyecto findById(Integer id) {
         return jefeProyectoRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public JefeProyecto findByUsuario(Usuario usuario) {
+        return jefeProyectoRepository.findByIdUsuario(usuario);
     }
 
     @Override

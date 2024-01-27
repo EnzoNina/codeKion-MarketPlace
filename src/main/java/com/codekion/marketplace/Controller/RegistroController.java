@@ -2,6 +2,7 @@ package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
 import com.codekion.marketplace.Service.IService.*;
+import com.codekion.marketplace.Utils.ModelPostFormBuilder;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,23 +34,7 @@ public class RegistroController {
     @Autowired
     private ISub_Categorias_UsuariosService subCategoriasUsuariosService;
 
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("titulo", "Login");
-        return "pages/login";
-    }
-
-    @PostMapping("/login")
-    public String loginPost(@RequestParam String user, @RequestParam String pass, HttpSession session) {
-        Usuario usuario = usuarioService.findByUserAndPass(user, pass);
-        if (usuario != null) {
-            session.setAttribute("usuario", usuario);
-            return "redirect:/home";
-        } else {
-            return "redirect:/";
-        }
-    }
+    ModelPostFormBuilder modelPostFormBuilder = new ModelPostFormBuilder();
 
     @RequestMapping(value = "/registrar")
     public String registrar(Map<String, Object> model) {
@@ -60,32 +45,34 @@ public class RegistroController {
     }
 
     @PostMapping("/registrar")
-    public String registrarPost(@Valid Usuario usuario, BindingResult result, Model model, HttpSession session) {
+    public String registrarPost(@Valid Usuario usuario, BindingResult result, Map<String, Object> model, HttpSession session) {
         if (result.hasErrors()) {
-            model.addAttribute("titulo", "Registrar de Usuario");
+            model.put("error", "Error al registrar");
             return "redirect:/";
         }
-        session.setAttribute("usuarioRegister", usuario);
-        return "redirect:/postForm";
-    }
-
-    @GetMapping("/postForm")
-    public String postForm(Map<String, Object> model) {
-        List<Habilidade> lstHabilidades = habilidadesService.findAll();
-        List<SubCategoria> lstSubCategoria = subCategoriaService.findAll();
-        model.put("habilidades", lstHabilidades);
-        model.put("subcategorias", lstSubCategoria);
-        model.put("titulo", "Formulario de Habilidades y Preferencias");
-        return "pages/postForm";
+        try {
+            //Obtenemos el objeto usuario a la session
+            session.setAttribute("usuarioRegister", usuario);
+            //Agregamos las listas al modelo
+            modelPostFormBuilder.ListHabilitiesAndSubCategoriesBuilder(model, habilidadesService, subCategoriaService);
+            return "pages/postForm";
+        } catch (Exception e) {
+            model.put("error", e.getMessage());
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/registrarPostForm")
     public String postForm(@RequestParam("habilidades") List<Integer> habilidadesiD, @RequestParam("subcategorias") List<Integer> subCategoriasIds,
                            HttpSession session) {
+        //Obtenemos el objeto usuario a la session
         Usuario usuario = (Usuario) session.getAttribute("usuarioRegister");
+        //Obtenemos las listas de habilidades y subcategorias
         List<Habilidade> lstHabilidades = habilidadesService.findByIds(habilidadesiD);
         List<SubCategoria> lstSubCategorias = subCategoriaService.findByIds(subCategoriasIds);
+        //Guardamos el usuario
         usuarioService.save(usuario);
+        //Guardamos las habilidades y subcategorias
         subCategoriasUsuariosService.saveCategoriasUsuarios(usuario, lstSubCategorias);
         habilidadesUsuariosService.saveHabilidadesUsuarios(usuario, lstHabilidades);
 

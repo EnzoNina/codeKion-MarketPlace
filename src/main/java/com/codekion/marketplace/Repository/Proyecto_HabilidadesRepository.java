@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ProyectoHabilidadesRepository extends JpaRepository<ProyectosHabilidade, ProyectosHabilidadeId> {
+public interface Proyecto_HabilidadesRepository extends JpaRepository<ProyectosHabilidade, ProyectosHabilidadeId> {
     List<ProyectosHabilidade> findAllByIdProyecto(Proyecto IdProyecto);
 }

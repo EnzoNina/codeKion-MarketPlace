@@ -5,7 +5,7 @@ import com.codekion.marketplace.Models.entity.Proyecto;
 import com.codekion.marketplace.Models.entity.ProyectoSubCategoria;
 import com.codekion.marketplace.Models.entity.ProyectosHabilidade;
 import com.codekion.marketplace.Service.IService.IColabores_ProyectosService;
-import com.codekion.marketplace.Service.IService.IProyectoHabilidades;
+import com.codekion.marketplace.Service.IService.IProyecto_HabilidadesService;
 import com.codekion.marketplace.Service.IService.IProyecto_Sub_CategoriaService;
 import com.codekion.marketplace.Service.IService.IProyectosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class PerfilProyectoController {
     private IProyectosService proyectosService;
 
     @Autowired
-    private IProyectoHabilidades proyectoHabilidadesService;
+    private IProyecto_HabilidadesService proyectoHabilidadesService;
 
     @Autowired
     private IProyecto_Sub_CategoriaService proyectoSubCategoriaService;
