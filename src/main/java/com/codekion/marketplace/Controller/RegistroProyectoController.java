@@ -18,8 +18,6 @@ import java.util.Map;
 
 @Controller
 public class RegistroProyectoController {
-    Logger log = org.slf4j.LoggerFactory.getLogger(RegistroProyectoController.class);
-
     @Autowired
     private IJefeProyectoService jefeProyectoService;
 
@@ -54,12 +52,10 @@ public class RegistroProyectoController {
         try {
             //Obtenemos el objeto proyecto a la session
             session.setAttribute("proyecto", proyecto);
-            log.info("Proyecto: " + proyecto.toString());
             //Agregamos las listas al modelo
             modelPostFormBuilder.ListHabilitiesAndSubCategoriesBuilder(model, habilidadesService, subCategoriaService);
             return "pages/postFormProyecto";
         } catch (Exception e) {
-            log.error("Error: " + e.getMessage());
             return "redirect:/home";
         }
     }
@@ -80,13 +76,13 @@ public class RegistroProyectoController {
     }
 
     private void saveProyectoAndJefeProyecto(Proyecto proyecto, Usuario usuario) {
-
         //Creamos instancia de tipo JefeProyecto
         JefeProyecto jefeProyecto = jefeProyectoService.findByUsuario(usuario);
         if (jefeProyecto == null) {
             jefeProyecto = new JefeProyecto();
-            jefeProyecto.setIdUsuario(usuario);
+
         }
+        jefeProyecto.setIdUsuario(usuario);
         //Obtenemos el objeto creado ya que este contiene el ID
         JefeProyecto jefeProyectoSaved = jefeProyectoService.save(jefeProyecto);
         //Obtenemos el ID del objeto Proyecto

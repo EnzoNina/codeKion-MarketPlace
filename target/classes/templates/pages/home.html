@@ -43,24 +43,7 @@
                     <div th:if="${proyectos == null}">
                         <p>No hay proyectos disponibles.</p>
                     </div>
-                    <table id="proyectosTable" class="table">
-                        <thead>
-                        <tr>
-                            <th>Nombre del Proyecto</th>
-                            <th>Descripción</th>
-                            <th>URL</th>
-                            <th>Estado</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="proyecto : ${proyectos}">
-                            <td th:text="${proyecto.nombreProyecto}"></td>
-                            <td th:text="${proyecto.descripcionProyecto}"></td>
-                            <td th:text="${proyecto.urlProyecto}"></td>
-                            <td th:text="${proyecto.estadoProyecto}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div th:insert="~{fragments/proyectosTableFragment :: proyectosTableFragment"></div>
                 </section>
             </div>
         </div>
