@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <div th:replace="~{fragments/head :: head}"></div>
 <body>
 
@@ -9,13 +8,10 @@
     <div class="container-fluid p-4 vh-100">
         <div class="row vh-100">
             <div class="col-md-2 card">
-
                 <section>
-
                     <div class="d-flex justify-content-between mb-3">
                         <h2 class="fw-bold">Filtrar por</h2>
                     </div>
-
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Subcategorías</label>
                         <div th:each="subcategoria : ${subcategorias}">
@@ -43,16 +39,14 @@
                     <div th:if="${proyectos == null}">
                         <p>No hay proyectos disponibles.</p>
                     </div>
-                    <div th:insert="~{fragments/proyectosTableFragment :: proyectosTableFragment"></div>
+                    <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
                 </section>
             </div>
         </div>
     </div>
 </main>
 <script>
-    $(document).ready(function () {
-        $('#proyectosTable').DataTable();
-    });
+    new DataTable('#proyectosTable');
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>

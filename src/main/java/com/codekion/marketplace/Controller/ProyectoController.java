@@ -31,5 +31,10 @@ public class ProyectoController {
         return proyectosService.findByJefeProyecto(usuario.getId());
     }
 
+    @GetMapping("/BuscarProyectos")
+    public String buscarProyectos(Model model) {
+        return "pages/buscarProyectos";
+    }
+
 
 }
