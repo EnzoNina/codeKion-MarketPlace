@@ -3,18 +3,14 @@
         <thead>
         <tr>
             <th>Nombre del Proyecto</th>
-            <th>Descripción</th>
             <th>URL</th>
+            <th>Descripción</th>
             <th>Estado</th>
+            <th>Acción</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="proyecto : ${proyectos}">
-            <td th:text="${proyecto.nombreProyecto}"></td>
-            <td th:text="${proyecto.descripcionProyecto}"></td>
-            <td th:text="${proyecto.urlProyecto}"></td>
-            <td th:text="${proyecto.estadoProyecto}"></td>
-        </tr>
+        <!-- Los datos de los proyectos se cargan con Ajax -->
         </tbody>
     </table>
 </div>

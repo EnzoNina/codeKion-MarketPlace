@@ -10,7 +10,7 @@
                         class="d-inline-block align-text-top"
                 />
                 <span class="fw-bold fs-4 text-primary">Bienvenido <span
-                        th:text="${session.usuario.nombre}"></span> </span>
+                        th:text="${session.usuario.nombre != null} ? ${session.usuario.nombre} : 'CodeKion'"></span> </span>
             </a>
             <button
                     class="navbar-toggler"
@@ -57,11 +57,19 @@
                 </ul>
             </div>
             <div class="d-flex">
-                <!-- Cambiar a perfil{id} ya esta creo -->
-                <a class="nav-link" th:href="@{/perfil/{id}(id=${session.usuario.id})}">
-                    <i class="bi bi-person"></i>
-                    <span class="fw-bold">Perfil</span>
-                </a>
+                <div th:if="${session.usuario.id != null}">
+                    <a class="nav-link" th:href="@{/perfil/{id}(id=${session.usuario.id})}">
+                        <i class="bi bi-person"></i>
+                        <span class="fw-bold">Perfil</span>
+                    </a>
+                </div>
+                <div th:if="${session.usuario.id == null}">
+                    <!-- You can replace '#' with the URL you want to redirect to when session.usuario.id does not exist -->
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-person"></i>
+                        <span class="fw-bold">Perfil</span>
+                    </a>
+                </div>
             </div>
             <div style="padding: 10px">
                 <span class="fw-bold">|</span>

@@ -1,6 +1,6 @@
 //Usaremos Ajax para cargar los proyectos en el select
 $.ajax({
-    url: "/getProyectos",
+    url: "/getProyectosPorUsuario",
     type: "GET",
     dataType: "json",
     success: function (data) {
@@ -20,4 +20,3 @@ $.ajax({
         console.error("Hubo un error al cargar los proyectos", error);
     }
 });
-

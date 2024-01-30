@@ -8,9 +8,9 @@ public interface IProyectosService {
 
     List<Proyecto> findAll();
 
-    public Proyecto save(Proyecto proyecto);
+    Proyecto save(Proyecto proyecto);
 
-    public Proyecto findById(Integer id);
+    Proyecto findById(Integer id);
 
     List<Proyecto> findByJefeProyecto(Integer id);
 

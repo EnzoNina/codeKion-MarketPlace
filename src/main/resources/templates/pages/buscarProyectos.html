@@ -6,5 +6,9 @@
 <main>
     <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
 </main>
+<script th:src="@{/js/GetProjectList.js}"></script>
+<script>
+    new DataTable('#proyectosTable');
+</script>
 </body>
 </html>

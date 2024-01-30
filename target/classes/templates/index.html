@@ -1,18 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<div th:replace="~{fragments/head :: head}"></div>
+<div th:replace="~{fragments/head :: head}">
+</div>
+<script th:src="@{/js/GetProjectList.js}"></script>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img
+                        th:src="@{/img/codeKion.jpg}"
+                        alt="Logo de la página"
+                        width="30"
+                        height="30"
+                        class="d-inline-block align-text-top"
+                />
+                <span class="fw-bold">CodeKion</span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul
+                        class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <span class="fw-bold">Inicio</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <a th:href="@{/login}"
+                   class="btn btn-outline-primary me-2"
+                   type="submit">
+                    <span class="fw-bold">Iniciar sesión</span>
+                </a>
+                <a th:href="@{/registrar}" class="btn btn-primary" type="submit">
+                    <span class="fw-bold">Registrarse</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
 <main>
-    <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
+    <div class="col-md-9">
+        <section id="publicaciones">
+            <div class="d-flex justify-content-between mb-3">
+                <h2 class="fw-bold">Publicaciones</h2>
+            </div>
+            <div th:if="${proyectos == null}">
+                <p>No hay proyectos disponibles.</p>
+            </div>
+            <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
+        </section>
+    </div>
 </main>
 <script>
-    new DataTable('#proyectosTable', {
-        lengthMenu: [
-            [10]
-        ]
-    });
+    new DataTable('#proyectosTable');
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>
 </html>
+

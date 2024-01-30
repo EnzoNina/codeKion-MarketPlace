@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Realiza la llamada AJAX para obtener proyectos
 $.ajax({
-    url: "/getProyectos",
+    url: "/getProyectosPorUsuario",
     type: "GET",
     dataType: "json",
     success: function (data) {

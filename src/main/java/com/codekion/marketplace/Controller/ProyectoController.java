@@ -25,10 +25,16 @@ public class ProyectoController {
     private IProyectosService proyectosService;
 
     //Se esta utilizando en buscarColaboradores.html en el script del ajax
+    @GetMapping("/getProyectosPorUsuario")
+    @ResponseBody
+    public List<Proyecto> getProyectosPorUsuario(@ModelAttribute("usuario") Usuario usuario) {
+        return proyectosService.findByJefeProyecto(usuario.getId());
+    }
+
     @GetMapping("/getProyectos")
     @ResponseBody
-    public List<Proyecto> getProyectos(@ModelAttribute("usuario") Usuario usuario) {
-        return proyectosService.findByJefeProyecto(usuario.getId());
+    public List<Proyecto> getProyectos() {
+        return proyectosService.findAll();
     }
 
     @GetMapping("/BuscarProyectos")

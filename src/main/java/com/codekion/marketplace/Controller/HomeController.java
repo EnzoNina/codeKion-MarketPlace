@@ -30,9 +30,7 @@ public class HomeController {
     @GetMapping("/home")
     public String home(Model model, @ModelAttribute("usuario") Usuario usuario) {
         if (usuario != null) {
-
             List<Proyecto> lstProyectos = proyectosService.findAll();
-
             List<SubCategoria> lstCategorias = subCategoriaService.findAll();
             model.addAttribute("proyectos", lstProyectos);
             model.addAttribute("subcategorias", lstCategorias);
