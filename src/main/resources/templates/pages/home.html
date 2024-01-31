@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <div th:replace="~{fragments/head :: head}">
-    <script th:src="@{/js/GetProjectList.js}"></script>
 </div>
+<script th:src="@{/js/GetProjectList.js}"></script>
 <body>
-
 <div th:replace="~{fragments/header :: header}"></div>
 <main>
     <div class="container-fluid p-4 vh-100">
@@ -38,9 +37,6 @@
                     <div class="d-flex justify-content-between mb-3">
                         <h2 class="fw-bold">Publicaciones</h2>
                     </div>
-                    <div th:if="${proyectos == null}">
-                        <p>No hay proyectos disponibles.</p>
-                    </div>
                     <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
                 </section>
             </div>
@@ -48,7 +44,10 @@
     </div>
 </main>
 <script>
-    new DataTable('#proyectosTable');
+    setTimeout(() => {
+        //Convertimos la tabla a DataTableJS
+        new DataTable('#proyectosTable');
+    }, 500);
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>

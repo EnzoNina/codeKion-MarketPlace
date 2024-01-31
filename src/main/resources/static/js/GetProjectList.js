@@ -5,7 +5,6 @@ $.ajax({
     dataType: "json",
     success: function (data) {
         var TablaproyectosSelect = $("#proyectosTable tbody");
-        console.log(TablaproyectosSelect)
         TablaproyectosSelect.empty();
 
         if (data.length === 0) {

@@ -41,20 +41,24 @@
     </nav>
 </header>
 <main>
-    <div class="col-md-9">
-        <section id="publicaciones">
-            <div class="d-flex justify-content-between mb-3">
-                <h2 class="fw-bold">Publicaciones</h2>
+    <div class="container">
+        <div class="row vh-100">
+            <div class="col-md-12">
+                <section id="publicaciones">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h2 class="fw-bold">Publicaciones</h2>
+                    </div>
+                    <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
+                </section>
             </div>
-            <div th:if="${proyectos == null}">
-                <p>No hay proyectos disponibles.</p>
-            </div>
-            <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
-        </section>
+        </div>
     </div>
 </main>
 <script>
-    new DataTable('#proyectosTable');
+    setTimeout(() => {
+        //Convertimos la tabla a DataTableJS
+        new DataTable('#proyectosTable');
+    }, 500);
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>

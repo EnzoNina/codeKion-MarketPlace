@@ -25,7 +25,7 @@ public class WebSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/js/**", "/img/**", "/postForm", "registrarPostForm", "/ws/**", "/registrar", "/login", "/getProyectos", "/getProyectosPorUsuario").permitAll()
+                        .requestMatchers("/js/**", "/img/**", "/postForm", "/registrarPostForm", "/ws/**", "/registrar", "/login", "/getProyectos", "/getProyectosPorUsuario").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
@@ -36,9 +36,9 @@ public class WebSecurity {
                         .successHandler(new CustomAuthenticationSuccessHandler(usuarioService))
                         .permitAll())
                 .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/") // Puedes cambiar la URL de redirección después del logout
                         .invalidateHttpSession(true)
-                        .clearAuthentication(true)
-                        .logoutSuccessUrl("/")
                         .permitAll());
         return http.build();
     }

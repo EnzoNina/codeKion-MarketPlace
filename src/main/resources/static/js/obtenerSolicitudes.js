@@ -1,4 +1,4 @@
-// Realiza la llamada AJAX para obtener las notificaciones
+// Realiza la llamada AJAX para obtener las solicitudes
 $.ajax({
     url: "/notificaciones/getNotificaciones",
     type: "GET",

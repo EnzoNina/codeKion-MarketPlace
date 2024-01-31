@@ -8,7 +8,6 @@ import com.codekion.marketplace.Service.IService.IUsuarioService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +18,6 @@ import java.util.List;
 public class SolicitudesController {
 
     private final Logger log = org.slf4j.LoggerFactory.getLogger(SolicitudesController.class);
-
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
 
     @Autowired
     private ISolicitudColaboradoresService solicitudColaboracionService;
@@ -47,7 +43,6 @@ public class SolicitudesController {
         // Envía una notificación a través de WebSocket
         try {
             solicitudColaboracionService.save(new SolicitudesColaboradore(proyecto, usuario, false));
-            messagingTemplate.convertAndSendToUser(usuario.getUser(), "/topic/notificaciones", "Fue invitado para unirse como colaborador al proyecto: " + proyecto.getNombreProyecto());
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
