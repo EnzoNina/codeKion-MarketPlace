@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">s
+<div th:replace="~{fragments/head :: head}"></div>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img
+                        src="ruta/a/tu/logo.png"
+                        alt="Logo de la página"
+                        width="30"
+                        height="30"
+                        class="d-inline-block align-text-top"
+                />
+                <span class="fw-bold fs-4 text-primary">Pagina</span>
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul
+                        class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0"
+                >
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <span class="fw-bold">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="fw-bold">Página 1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="fw-bold">Página 2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="fw-bold">Página 3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <a
+                        href="login.html"
+                        class="btn btn-outline-primary me-2"
+                        type="submit"
+                >
+                    <span class="fw-bold">Iniciar sesión</span>
+                </a>
+                <a href="registro.html" class="btn btn-primary" type="submit">
+                    <span class="fw-bold">Registrarse</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div id="colaborador" class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="fw-bold mb-4">Buscar personal</h1>
+                <form>
+                    <div class="input-group mb-3">
+                        <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Ingrese el nombre del personal"
+                        />
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                </form>
+
+                <h2 class="fw-bold mb-3">Colaboradores</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..."/>
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre del colaborador 1</h5>
+                                <p class="card-text">Descripción breve del colaborador 1</p>
+                                <a href="#" class="btn btn-primary">Ver perfil</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="..."/>
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre del colaborador 2</h5>
+                                <p class="card-text">Descripción breve del colaborador 2</p>
+                                <a href="#" class="btn btn-primary">Ver perfil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="solicitudes-colaboradores">
+                <h2 class="fw-bold mb-3">Solicitudes de colaboración</h2>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Nombre del colaborador 1
+                        <div>
+                            <button class="btn btn-success me-2" type="button">Aceptar</button>
+                            <button class="btn btn-danger" type="button">Rechazar</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Nombre del colaborador 2
+                        <div>
+                            <button class="btn btn-success me-2" type="button">Aceptar</button>
+                            <button class="btn btn-danger" type="button">Rechazar</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Nombre del colaborador 3
+                        <div>
+                            <button class="btn btn-success me-2" type="button">Aceptar</button>
+                            <button class="btn btn-danger" type="button">Rechazar</button>
+                        </div>
+                    </li>
+                    <!-- Agrega más solicitudes de colaboración aquí -->
+                </ul>
+            </div>
+            s
+        </div>
+    </div>
+</main>
+<div th:insert="~{fragments/scripts :: footer}"></div>
+</body>
+</html>

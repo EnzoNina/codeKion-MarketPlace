@@ -13,9 +13,11 @@
     <version>1</version>
     <name>codeKion</name>
     <description>codeKion</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
 
         <dependency>
@@ -88,6 +90,11 @@
 
     <build>
         <plugins>
+            <!-- Package as an executable jar/war -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

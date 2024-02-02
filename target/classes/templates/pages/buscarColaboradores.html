@@ -3,12 +3,14 @@
 <div th:replace="~{fragments/head :: head}"></div>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
+<!-- Div si el Usuario ya esta en el proyecto -->
+<div th:if="${error}" class="alert alert-warning">
+    <p th:text="${error}"></p>
+</div>
 <div class="container">
     <div class="container">
         <div class="row vh-100">
-            <div th:if="${error}" class="alert alert-warning">
-                <p th:text="${error}"></p>
-            </div>
+
             <div class="col-md-8">
                 <h1 class="card-tittle">Lista de Colaboradores</h1>
                 <table class="table">
