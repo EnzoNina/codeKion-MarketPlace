@@ -1,14 +1,11 @@
 package com.codekion.marketplace.Controller;
 
 import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Service.IService.IColaboradoresService;
-import com.codekion.marketplace.Service.IService.IColabores_ProyectosService;
-import com.codekion.marketplace.Service.IService.ISolicitudColaboradoresService;
-import com.codekion.marketplace.Service.IService.IUsuarioService;
-import org.slf4j.Logger;
+import com.codekion.marketplace.Service.IService.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,9 +13,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/notificaciones")
 public class SolicitudesController {
-
-    private final Logger log = org.slf4j.LoggerFactory.getLogger(SolicitudesController.class);
-
     @Autowired
     private ISolicitudColaboradoresService solicitudColaboracionService;
 
@@ -31,22 +25,32 @@ public class SolicitudesController {
     @Autowired
     private IColaboradoresService colaboradoresService;
 
+    @Autowired
+    private IProyectosService proyectosService;
+
     @GetMapping("/mostrar")
     public String solicitudes() {
         return "pages/solicitudes";
     }
 
-    @PostMapping("/Buscarcolaboradores")
-    public String enviarSolicitudColaboracion(@RequestParam("userId") Integer userId, @RequestParam("proyecto") Proyecto proyecto) {
+    @PostMapping("/enviarSolicitud")
+    public String enviarSolicitudColaboracion(@RequestParam("userId") Integer userId, @RequestParam("proyecto") Proyecto proyecto, Model model) {
         Usuario usuario = usuarioService.findById(userId);
-        System.out.println("Usuario a enviar solicitud: " + usuario.getUser());
-        // Envía una notificación a través de WebSocket
-        try {
-            solicitudColaboracionService.save(new SolicitudesColaboradore(proyecto, usuario, false));
-        } catch (DataAccessException e) {
-            e.printStackTrace();
+        List<Proyecto> lstProyectos = proyectosService.findByColaboradoresAndIdUsuario(usuario.getId());
+        if (lstProyectos.isEmpty()) {
+            // Envía una notificación a través de WebSocket
+            try {
+                solicitudColaboracionService.save(new SolicitudesColaboradore(proyecto, usuario, false));
+            } catch (DataAccessException e) {
+                e.printStackTrace();
+            }
         }
-        return "pages/buscarColaboradores";
+        if (lstProyectos.contains(proyecto)) {
+            //Retornar a la vista con un mensaje de que el usuario ya esta en el proyecto
+            model.addAttribute("error", "El usuario ya esta en el proyecto");
+        }
+
+        return "redirect:/BuscarcolaboradoresPage";
     }
 
     @GetMapping("/getNotificaciones")

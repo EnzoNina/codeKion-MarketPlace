@@ -10,9 +10,12 @@ import java.util.List;
 
 public interface ProyectoRepository extends JpaRepository<Proyecto, Integer> {
 
-    @Query("SELECT NEW com.codekion.marketplace.Models.DTO.UsuarioProyectoDTO(u,p) " +
-            "from Usuario u left join JefeProyecto jp on u.id = jp.idUsuario.id left join " +
-            "JefeProyectoProyecto  jpp on jp.id_jefe_proyecto = jpp.idJefeProyecto.id_jefe_proyecto left join " +
-            "Proyecto p on jpp.idProyecto.id = p.id where u.id   =:idUsuario")
-    List<UsuarioProyectoDTO> buscarProyectosPorUsuario(@Param("idUsuario") Integer idUsuario);
+    @Query("SELECT p FROM Proyecto p left join JefeProyectoProyecto jpp on p.id=jpp.idProyecto.id " +
+            "left join JefeProyecto jp on jpp.idJefeProyecto.id_jefe_proyecto = jp.id_jefe_proyecto " +
+            "left join Usuario u on jp.idUsuario.id=u.id where u.id =:idUsuario")
+            List<Proyecto>findByJefeProyecto(Integer idUsuario);
+
+    @Query("Select p FROM Proyecto p left join ColaboradoresProyecto cp on p.id = cp.idProyecto.id " +
+            "left join Colaboradore c on cp.idColaborador.id = c.id left join Usuario u on c.idUsuario.id = u.id where u.id =:idUsuario")
+    List<Proyecto> findByColaboradoresAndIdUsuario(Integer idUsuario);
 }

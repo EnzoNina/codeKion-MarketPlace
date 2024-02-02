@@ -3,38 +3,52 @@
 <div th:replace="~{fragments/head :: head}"></div>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
+<!-- Div si el Usuario ya esta en el proyecto -->
+<div th:if="${error}" class="alert alert-warning">
+    <p th:text="${error}"></p>
+</div>
 <div class="container">
-    <h1>Lista de Colaboradores</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Nombre de Usuario</th>
-            <th>Habilidades</th>
-            <th>Subcategorías</th>
-            <th>Acción</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
-            <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
-            <td>
-                <ul>
-                    <li th:each="habilidad : ${usuarioInfoDto.habilidades}" th:text="${habilidad.nombreHabilidad}"></li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
-                        th:text="${subCategoria.nombreSubCategoria}"></li>
-                </ul>
-            </td>
-            <td>
-                <!-- Botón para abrir el modal -->
-                <button class="abrirModalBtn"  data-toggle="modal" data-target="#myModal" th:data-user="${usuarioInfoDto.usuario.id}" >Enviar Solicitud</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row vh-100">
+
+            <div class="col-md-8">
+                <h1 class="card-tittle">Lista de Colaboradores</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre de Usuario</th>
+                        <th>Habilidades</th>
+                        <th>Subcategorías</th>
+                        <th>Acción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
+                        <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="habilidad : ${usuarioInfoDto.habilidades}"
+                                    th:text="${habilidad.nombreHabilidad}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
+                                    th:text="${subCategoria.nombreSubCategoria}"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <!-- Botón para abrir el modal -->
+                            <button id="openModal" class="abrirModalBtn" data-toggle="modal" data-target="#myModal"
+                                    th:data-user="${usuarioInfoDto.usuario.id}">Enviar Solicitud
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -47,12 +61,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form th:action="@{/Buscarcolaboradores}" method="post">
-                <input type="hidden" id="userInput" name="userId" />
+            <form th:action="@{/notificaciones/enviarSolicitud}" method="post">
+                <input type="hidden" id="userInput" name="userId"/>
                 <div class="modal-body">
-                        <select id="proyecto" name="proyecto"  class="form-control">
-                            <!-- Se cargan los datos con Ajax -->
-                        </select>
+                    <select id="proyecto" name="proyecto" class="form-control">
+                        <!-- Se cargan los datos con Ajax -->
+                    </select>
                 </div>
                 <div class="modal-footer">
                     <!-- Botón para enviar la solicitud -->

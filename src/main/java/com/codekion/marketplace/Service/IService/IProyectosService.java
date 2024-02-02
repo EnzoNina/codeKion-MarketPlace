@@ -14,5 +14,6 @@ public interface IProyectosService {
 
     List<Proyecto> findByJefeProyecto(Integer id);
 
+    List<Proyecto> findByColaboradoresAndIdUsuario(Integer idUsuario);
 
 }

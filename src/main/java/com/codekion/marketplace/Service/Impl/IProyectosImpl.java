@@ -34,10 +34,12 @@ public class IProyectosImpl implements IProyectosService {
 
     @Override
     public List<Proyecto> findByJefeProyecto(Integer id) {
-        List<UsuarioProyectoDTO> lstDTO = proyectoRepository.buscarProyectosPorUsuario(id);
-        //Con UsuarioProyectoDTO::getProyectos obtenemos los proyectos que pertenecen al usuario con el id que se le pasa por parametro
-        List<Proyecto> lstProyectos = lstDTO.stream().map(UsuarioProyectoDTO::getProyecto).toList();
-        return lstProyectos;
+        return proyectoRepository.findByJefeProyecto(id);
+    }
+
+    @Override
+    public List<Proyecto> findByColaboradoresAndIdUsuario(Integer idUsuario) {
+        return proyectoRepository.findByColaboradoresAndIdUsuario(idUsuario);
     }
 
 

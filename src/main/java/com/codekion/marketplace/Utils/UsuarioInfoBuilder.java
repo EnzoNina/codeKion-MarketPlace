@@ -14,8 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class UsuarioInfoBuilder {
-
-    public static List<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario) {
+    public static List<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario, Usuario sessionUser) {
         // Construir mapas usando el método genérico buildMap
         Map<Usuario, List<Habilidade>> usuarioHabilidadesMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getHabilidades);
         Map<Usuario, List<SubCategoria>> usuarioSubCategoriasMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getSub_categoria);
@@ -23,6 +22,11 @@ public class UsuarioInfoBuilder {
         // Crear lista final de UsuarioInfoDto
         List<UsuarioInfoDto> infolst = new ArrayList<>();
         for (Usuario usuario : usuarioHabilidadesMap.keySet()) {
+            // Verificar si el usuario es el mismo que la sesión
+            if (usuario.getId() == sessionUser.getId()) {
+                continue;
+            }
+
             UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getCorreo());
             List<Habilidade> habilidades = usuarioHabilidadesMap.get(usuario);
             List<SubCategoria> subCategorias = usuarioSubCategoriasMap.get(usuario);
