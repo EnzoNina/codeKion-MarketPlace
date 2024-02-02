@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<div th:replace="~{fragments/head :: head}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="container-fluid p-4">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">Datos personales</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <span class="fw-bold">Nombre:</span> <span th:text="${usuario.nombre}"></span>
+                            </li>
+                            <li>
+                                <span class="fw-bold">Apellido:</span>
+                                <span th:text="${usuario.apellido}"></span>
+                            </li>
+                            <li>
+                                <span class="fw-bold">Correo electrónico:</span>
+                                <span th:text="${usuario.correo}"></span>
+                            </li>
+                        </ul>
+                        <h2 class="card-title">Categorias de interes</h2>
+                        <ul class="list-unstyled">
+                            <li th:each="subCategoria : ${usuarioInfo.subCategorias}">
+                                <span th:text="${subCategoria.nombreSubCategoria}"></span>
+                            </li>
+                        </ul>
+                        <h2 class="card-title">Habilidades</h2>
+                        <ul class="list-unstyled">
+                            <li th:each="habilidad : ${usuarioInfo.habilidades}">
+                                <span th:text="${habilidad.nombreHabilidad}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Proyectos</h2>
+
+                        <table class="table" id="tablaProyectos">
+                            <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>URL Proyecto</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/UploadProfileProyects.js}"></script>
+</main>
+<div th:insert="~{fragments/scripts :: footer}"></div>
+</body>
+</html>

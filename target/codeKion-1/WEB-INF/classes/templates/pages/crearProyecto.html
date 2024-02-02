@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<div th:replace="~{fragments/head :: head}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="container">
+    <h1 class="text-center">Crear proyecto</h1>
+    <form th:action="@{/Crearproyecto}" th:object="${proyecto}" method="post">
+        <div class="mb-3">
+            <label for="nombreProyecto" class="form-label">Nombre del proyecto</label>
+            <input type="text" class="form-control" id="nombreProyecto" th:field="*{nombreProyecto}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="urlProyecto" class="form-label">URL del proyecto</label>
+            <input type="text" class="form-control" id="urlProyecto" th:field="*{urlProyecto}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="descripcionProyecto" class="form-label">Descripción del proyecto</label>
+            <textarea class="form-control" id="descripcionProyecto" th:field="*{descripcionProyecto}"
+                      required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="estadoProyecto" class="form-label">Estado del proyecto</label>
+            <select class="form-control" id="estadoProyecto" th:field="*{estadoProyecto}" required>
+                <option value="En desarrollo">En desarrollo</option>
+                <option value="Finalizado">Finalizado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear proyecto</button>
+    </form>
+</div>
+<div th:insert="~{fragments/scripts :: footer}"></div>
+</body>
+</html>

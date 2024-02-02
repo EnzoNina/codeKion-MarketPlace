@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<div th:replace="~{fragments/head :: head}"></div>
+<script th:src="@{/js/GetProjectList.js}"></script>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
+</main>
+<script>
+    setTimeout(() => {
+        //Convertimos la tabla a DataTableJS
+        new DataTable('#proyectosTable');
+    }, 500);
+</script>
+</body>
+</html>

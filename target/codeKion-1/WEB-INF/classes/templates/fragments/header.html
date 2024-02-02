@@ -1,0 +1,98 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/home}">
+                <img
+                        th:src="@{/img/codeKion.jpg}"
+                        alt="Logo de la página"
+                        width="30"
+                        height="30"
+                        class="d-inline-block align-text-top"
+                />
+                <span class="fw-bold fs-4 text-primary">Bienvenido <span
+                        th:text="${session.usuario.nombre != null} ? ${session.usuario.nombre} : 'CodeKion'"></span> </span>
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul
+                        class="navbar-nav justify-content-center text-center mx-auto me-auto mb-2 mb-lg-0"
+                >
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:history.back()">
+                            <i class="bi bi-caret-left-square"></i>
+                            <span class="fw-bold">Volver</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/home}">
+                            <span class="fw-bold">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/Crearproyecto}">
+                            <span class="fw-bold">Crear Proyecto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/BuscarProyectos}">
+                            <span class="fw-bold">Buscar proyectos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/BuscarcolaboradoresPage}">
+                            <span class="fw-bold">Buscar colaboradores</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="d-flex">
+                <div th:if="${session.usuario.id != null}">
+                    <a class="nav-link" th:href="@{/perfil/{id}(id=${session.usuario.id})}">
+                        <i class="bi bi-person"></i>
+                        <span class="fw-bold">Perfil</span>
+                    </a>
+                </div>
+                <div th:if="${session.usuario.id == null}">
+                    <!-- You can replace '#' with the URL you want to redirect to when session.usuario.id does not exist -->
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-person"></i>
+                        <span class="fw-bold">Perfil</span>
+                    </a>
+                </div>
+            </div>
+            <div style="padding: 10px">
+                <span class="fw-bold">|</span>
+            </div>
+            <div class="d-flex">
+                <a class="nav-link" th:href="@{/notificaciones/mostrar}">
+                    <i class="bi bi-bell-fill"></i>
+                    <span class="fw-bold" id="nSolicitudes" ></span>
+                    <span class="fw-bold">Solicitudes</span>
+                </a>
+            </div>
+            <div style="padding: 10px">
+                <span class="fw-bold">|</span>
+            </div>
+            <div class="d-flex">
+                <form th:action="@{/logout}" method="post" id="logoutForm">
+                    <!-- Puedes agregar cualquier otro contenido o estilo según tus necesidades -->
+                    <button class="nav-link" type="submit">
+                        <span class="fw-bold">Cerrar Sesion</span>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>

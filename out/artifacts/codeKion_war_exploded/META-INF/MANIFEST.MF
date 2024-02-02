@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: hoptc
-Build-Jdk: Oracle OpenJDK version 17.0.9
-Implementation-Title: codeKion
-Implementation-Version: 1
-Implementation-Vendor-Id: com.codeKion
-Main-Class: ${start-class}
-
