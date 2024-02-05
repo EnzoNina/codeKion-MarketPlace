@@ -10,7 +10,9 @@
 <script>
     setTimeout(() => {
         //Convertimos la tabla a DataTableJS
-        new DataTable('#proyectosTable');
+        new DataTable('#proyectosTable', {
+            "lengthMenu": [5, 10, 15]
+        });
     }, 500);
 </script>
 </body>

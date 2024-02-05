@@ -8,30 +8,6 @@
 <main>
     <div class="container-fluid p-4 vh-100">
         <div class="row vh-100">
-            <div class="col-md-2 card">
-                <section>
-                    <div class="d-flex justify-content-between mb-3">
-                        <h2 class="fw-bold">Filtrar por</h2>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Subcategorías</label>
-                        <div th:each="subcategoria : ${subcategorias}">
-                            <a th:href="@{/proyectos/subcategoria/{id}(id=${subcategoria.id})}"
-                               class="btn btn-secondary me-2 mb-2" th:text="${subcategoria.nombreSubCategoria}"></a>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Buscar</label>
-                        <input
-                                type="text"
-                                style="width: 75%;"
-                                class="form-control"
-                                id="exampleFormControlInput1"
-                                placeholder="Título de la sub categgoria"
-                        />
-                    </div>
-                </section>
-            </div>
             <div class="col-md-9">
                 <section id="publicaciones">
                     <div class="d-flex justify-content-between mb-3">
@@ -44,10 +20,12 @@
     </div>
 </main>
 <script>
-    setTimeout(() => {
-        //Convertimos la tabla a DataTableJS
-        new DataTable('#proyectosTable');
-    }, 500);
+    window.onload = function () {
+        // Convertimos la tabla a DataTableJS
+        new DataTable('#proyectosTable', {
+            "lengthMenu": [5, 10, 15]
+        });
+    }
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>

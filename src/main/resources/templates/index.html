@@ -57,8 +57,10 @@
 <script>
     setTimeout(() => {
         //Convertimos la tabla a DataTableJS
-        new DataTable('#proyectosTable');
-    }, 500);
+        new DataTable('#proyectosTable', {
+            "lengthMenu": [5, 10, 15]
+        });
+    }, 600);
 </script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>

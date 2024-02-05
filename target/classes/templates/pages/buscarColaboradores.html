@@ -10,10 +10,9 @@
 <div class="container">
     <div class="container">
         <div class="row vh-100">
-
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <h1 class="card-tittle">Lista de Colaboradores</h1>
-                <table class="table">
+                <table class="table" id="colaboradoresTable">
                     <thead>
                     <tr>
                         <th>Nombre de Usuario</th>
@@ -77,6 +76,12 @@
     </div>
 </div>
 <div th:insert="~{fragments/scripts :: footer}"></div>
+<script>
+    //Convertimos la tabla a DataTableJS
+    new DataTable('#colaboradoresTable',{
+        "lengthMenu": [ 5,10,15 ]
+    });
+</script>
 <script th:src="@{/js/buscarColaboradores.js}"></script>
 </body>
 </html>
