@@ -1,22 +1,20 @@
 package com.codekion.marketplace.Controller;
 
-import com.codekion.marketplace.Models.entity.*;
-import com.codekion.marketplace.Service.IService.IJefeProyectoProyectosService;
-import com.codekion.marketplace.Service.IService.IJefeProyectoService;
+import com.codekion.marketplace.Models.entity.Proyecto;
+import com.codekion.marketplace.Models.entity.Usuario;
 import com.codekion.marketplace.Service.IService.IProyectosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ProyectoController {
@@ -33,8 +31,10 @@ public class ProyectoController {
 
     @GetMapping("/getProyectos")
     @ResponseBody
-    public List<Proyecto> getProyectos() {
-        return proyectosService.findAll();
+    public Page<Proyecto> getProyectos(@RequestParam(defaultValue = "0") int page,
+                                       @RequestParam(defaultValue = "5") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return proyectosService.findAllPageable(pageable);
     }
 
     @GetMapping("/BuscarProyectos")

@@ -46,7 +46,7 @@
             <div class="col-md-12">
                 <section id="publicaciones">
                     <div class="d-flex justify-content-between mb-3">
-                        <h2 class="fw-bold">Publicaciones</h2>
+                        <h2 class="fw-bold">Proyectos</h2>
                     </div>
                     <div th:insert="~{fragments/proyectosTableFragment :: div}"></div>
                 </section>
@@ -54,14 +54,6 @@
         </div>
     </div>
 </main>
-<script>
-    setTimeout(() => {
-        //Convertimos la tabla a DataTableJS
-        new DataTable('#proyectosTable', {
-            "lengthMenu": [5, 10, 15]
-        });
-    }, 600);
-</script>
 <div th:insert="~{fragments/scripts :: footer}"></div>
 </body>
 </html>

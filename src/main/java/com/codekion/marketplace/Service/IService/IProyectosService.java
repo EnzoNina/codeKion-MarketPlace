@@ -1,12 +1,15 @@
 package com.codekion.marketplace.Service.IService;
 
 import com.codekion.marketplace.Models.entity.Proyecto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface IProyectosService {
 
     List<Proyecto> findAll();
+    Page<Proyecto> findAllPageable(Pageable pageable);
 
     Proyecto save(Proyecto proyecto);
 

@@ -76,12 +76,6 @@
     </div>
 </div>
 <div th:insert="~{fragments/scripts :: footer}"></div>
-<script>
-    //Convertimos la tabla a DataTableJS
-    new DataTable('#colaboradoresTable',{
-        "lengthMenu": [ 5,10,15 ]
-    });
-</script>
 <script th:src="@{/js/buscarColaboradores.js}"></script>
 </body>
 </html>
