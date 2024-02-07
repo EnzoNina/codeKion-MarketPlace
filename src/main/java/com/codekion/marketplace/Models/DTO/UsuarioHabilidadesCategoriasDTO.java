@@ -44,4 +44,6 @@ public class UsuarioHabilidadesCategoriasDTO {
     public void setSub_categoria(SubCategoria sub_categoria) {
         this.sub_categoria = sub_categoria;
     }
+
+
 }

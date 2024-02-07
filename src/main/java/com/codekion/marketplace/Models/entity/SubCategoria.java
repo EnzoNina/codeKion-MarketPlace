@@ -1,5 +1,6 @@
 package com.codekion.marketplace.Models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ public class SubCategoria {
     @Column(name = "id_sub_categoria", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria idCategoria;
 

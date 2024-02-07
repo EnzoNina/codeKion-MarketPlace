@@ -6,6 +6,7 @@ import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
 import com.codekion.marketplace.Models.entity.Habilidade;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
+import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.HashMap;

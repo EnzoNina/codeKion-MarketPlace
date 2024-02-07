@@ -23,10 +23,7 @@ $.ajax({
             $.each(data, function (index, proyecto) {
                 proyectosSelect.append("<option value='" + proyecto.id + "'>" + proyecto.nombreProyecto + "</option>");
             });
-            //Convertimos la tabla a DataTableJS
-            new DataTable('#colaboradoresTable', {
-                "lengthMenu": [5, 10, 15]
-            });
+
         }
     },
     error: function (error) {

@@ -31,16 +31,21 @@ public class ProyectoController {
 
     @GetMapping("/getProyectos")
     @ResponseBody
-    public Page<Proyecto> getProyectos(@RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(defaultValue = "5") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return proyectosService.findAllPageable(pageable);
+    public Page<Proyecto> getProyectos(@RequestParam("start") int start,
+                                       @RequestParam("length") int length,
+                                       @RequestParam("search[value]") String searchValue) {
+        int pageNumber = start / length;
+        Pageable pageable = PageRequest.of(pageNumber, length);
+
+        if (!searchValue.isEmpty()) {
+            return proyectosService.findAllPageableByNombreAndIgnoreUpperCase(searchValue, pageable);
+        } else {
+            return proyectosService.findAllPageable(pageable);
+        }
     }
 
     @GetMapping("/BuscarProyectos")
     public String buscarProyectos(Model model) {
         return "pages/buscarProyectos";
     }
-
-
 }

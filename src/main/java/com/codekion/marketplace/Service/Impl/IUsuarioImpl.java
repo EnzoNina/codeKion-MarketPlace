@@ -2,11 +2,12 @@ package com.codekion.marketplace.Service.Impl;
 
 import com.codekion.marketplace.Config.WebSecurity;
 import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO;
-import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
-import com.codekion.marketplace.Repository.UsuarioRepository;
 import com.codekion.marketplace.Models.entity.Usuario;
+import com.codekion.marketplace.Repository.UsuarioRepository;
 import com.codekion.marketplace.Service.IService.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -60,6 +61,13 @@ public class IUsuarioImpl implements IUsuarioService {
     @Override
     public List<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidades() {
         return usuarioDao.buscarUsuariosYHabilidades();
+    }
+
+    @Override
+    public Page<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidadesPageable(Pageable pageable) {
+        Page<UsuarioHabilidadesCategoriasDTO> usuarioHabilidadesCategoriasDTOS = usuarioDao.buscarUsuariosYHabilidadesPageable(pageable);
+        System.out.println("usuarioHabilidadesCategoriasDTOS = " + usuarioHabilidadesCategoriasDTOS.toString());
+        return usuarioHabilidadesCategoriasDTOS;
     }
 
 }

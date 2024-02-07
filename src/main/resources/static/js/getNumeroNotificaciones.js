@@ -10,6 +10,6 @@ $.ajax({
         notificaciones.text(data);
     },
     error: function (error) {
-        console.error("Error al obtener proyectos:", error);
+        console.error("Error al obtener Notificaciones:", error);
     }
 });

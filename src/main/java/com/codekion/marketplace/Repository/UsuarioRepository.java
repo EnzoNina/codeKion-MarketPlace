@@ -1,8 +1,9 @@
 package com.codekion.marketplace.Repository;
 
 import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO;
-import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
 import com.codekion.marketplace.Models.entity.Usuario;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,4 +18,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("SELECT NEW com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO(u, h,sc) from Usuario u left join UsuariosHabilidade uh on u.id = uh.idUsuario.id left join Habilidade h on uh.idHabilidad.id = h.id right join UsuarioSubCategoria usc on u.id = usc.idUsuario.id right join SubCategoria sc on sc.id = usc.idSubCategoria.id")
     List<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidades();
 
+    @Query("SELECT NEW com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO(u, h,sc) from Usuario u left join UsuariosHabilidade uh on u.id = uh.idUsuario.id left join Habilidade h on uh.idHabilidad.id = h.id right join UsuarioSubCategoria usc on u.id = usc.idUsuario.id right join SubCategoria sc on sc.id = usc.idSubCategoria.id")
+    Page<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidadesPageable(Pageable pageable);
 }

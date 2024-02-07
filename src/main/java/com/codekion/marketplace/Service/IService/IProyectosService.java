@@ -9,7 +9,10 @@ import java.util.List;
 public interface IProyectosService {
 
     List<Proyecto> findAll();
+
     Page<Proyecto> findAllPageable(Pageable pageable);
+
+    Page<Proyecto> findAllPageableByNombreAndIgnoreUpperCase(String searchValue, Pageable pageable);
 
     Proyecto save(Proyecto proyecto);
 
@@ -18,5 +21,4 @@ public interface IProyectosService {
     List<Proyecto> findByJefeProyecto(Integer id);
 
     List<Proyecto> findByColaboradoresAndIdUsuario(Integer idUsuario);
-
 }

@@ -3,6 +3,7 @@
 <div th:replace="~{fragments/head :: head}"></div>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
+<script th:src="@{/js/pruebaColaboradores.js}"></script>
 <!-- Div si el Usuario ya esta en el proyecto -->
 <div th:if="${error}" class="alert alert-warning">
     <p th:text="${error}"></p>
@@ -22,27 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="usuarioInfoDto : ${usuarioInfoList}">
-                        <td th:text="${usuarioInfoDto.usuario.nombre + ' ' + usuarioInfoDto.usuario.apellido}"></td>
-                        <td>
-                            <ul>
-                                <li th:each="habilidad : ${usuarioInfoDto.habilidades}"
-                                    th:text="${habilidad.nombreHabilidad}"></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li th:each="subCategoria : ${usuarioInfoDto.subCategorias}"
-                                    th:text="${subCategoria.nombreSubCategoria}"></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <!-- Botón para abrir el modal -->
-                            <button id="openModal" class="abrirModalBtn" data-toggle="modal" data-target="#myModal"
-                                    th:data-user="${usuarioInfoDto.usuario.id}">Enviar Solicitud
-                            </button>
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -76,6 +57,6 @@
     </div>
 </div>
 <div th:insert="~{fragments/scripts :: footer}"></div>
-<script th:src="@{/js/buscarColaboradores.js}"></script>
+<script th:src="@{/js/uploadProjectsXUser.js}"></script>
 </body>
 </html>

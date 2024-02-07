@@ -27,6 +27,10 @@ public class IProyectosImpl implements IProyectosService {
         return proyectoRepository.findAll(pageable);
     }
 
+    @Override
+    public Page<Proyecto> findAllPageableByNombreAndIgnoreUpperCase(String searchValue, Pageable pageable) {
+        return proyectoRepository.findAllPageableByNombreAndIgnoreUpperCase(searchValue, pageable);
+    }
 
     @Override
     public Proyecto save(Proyecto proyecto) {

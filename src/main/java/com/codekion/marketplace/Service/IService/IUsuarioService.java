@@ -1,8 +1,9 @@
 package com.codekion.marketplace.Service.IService;
 
 import com.codekion.marketplace.Models.DTO.UsuarioHabilidadesCategoriasDTO;
-import com.codekion.marketplace.Models.DTO.UsuarioInfoDto;
 import com.codekion.marketplace.Models.entity.Usuario;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -20,4 +21,5 @@ public interface IUsuarioService extends UserDetailsService {
     Usuario findByUser(String user);
 
     public List<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidades();
+    public Page<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidadesPageable(Pageable pageable);
 }
