@@ -7,6 +7,8 @@ import com.codekion.marketplace.Models.entity.Habilidade;
 import com.codekion.marketplace.Models.entity.SubCategoria;
 import com.codekion.marketplace.Models.entity.Usuario;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +17,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class UsuarioInfoBuilder {
-    public static List<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario, Usuario sessionUser) {
+    public static Page<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario, Usuario sessionUser, Pageable pageable) {
         // Construir mapas usando el método genérico buildMap
         Map<Usuario, List<Habilidade>> usuarioHabilidadesMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getHabilidades);
         Map<Usuario, List<SubCategoria>> usuarioSubCategoriasMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getSub_categoria);
@@ -33,7 +35,8 @@ public class UsuarioInfoBuilder {
             List<SubCategoria> subCategorias = usuarioSubCategoriasMap.get(usuario);
             infolst.add(new UsuarioInfoDto(usuarioDTO, habilidades, subCategorias));
         }
-        return infolst;
+        // Crear un objeto Page a partir de la lista infolst y el objeto pageable
+        return new PageImpl<>(infolst, pageable, infolst.size());
     }
 
     // Método genérico para construir mapas

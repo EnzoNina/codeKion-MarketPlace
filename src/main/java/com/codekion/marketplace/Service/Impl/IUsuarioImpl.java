@@ -65,9 +65,7 @@ public class IUsuarioImpl implements IUsuarioService {
 
     @Override
     public Page<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidadesPageable(Pageable pageable) {
-        Page<UsuarioHabilidadesCategoriasDTO> usuarioHabilidadesCategoriasDTOS = usuarioDao.buscarUsuariosYHabilidadesPageable(pageable);
-        System.out.println("usuarioHabilidadesCategoriasDTOS = " + usuarioHabilidadesCategoriasDTOS.toString());
-        return usuarioHabilidadesCategoriasDTOS;
+        return usuarioDao.buscarUsuariosYHabilidadesPageable(pageable);
     }
 
 }
