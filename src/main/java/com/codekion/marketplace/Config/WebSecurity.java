@@ -23,12 +23,13 @@ public class WebSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/js/**", "/img/**", "/postForm", "/registrarPostForm", "/ws/**", "/registrar", "/login", "/getProyectos", "/getProyectosPorUsuario").permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
+        http.authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/js/**", "/img/**", "/postForm", "/registrarPostForm", "/ws/**"
+                                , "/registrar", "/login", "/getProyectos", "/getProyectosPorUsuario")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .formLogin(formLogin -> formLogin.loginPage("/login")
                         .usernameParameter("user")
                         .passwordParameter("pass")
                         .failureUrl("/login?error=true")
@@ -45,9 +46,7 @@ public class WebSecurity {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(usuarioService)
-                .passwordEncoder(passwordEncoder);
+        auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder);
     }
 
 }

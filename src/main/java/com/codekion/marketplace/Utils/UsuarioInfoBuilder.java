@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class UsuarioInfoBuilder {
-    public static Page<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario, Usuario sessionUser, Pageable pageable) {
+    public static List<UsuarioInfoDto> buildUsuarioInfoList(List<UsuarioHabilidadesCategoriasDTO> lstUsuario, Usuario sessionUser) {
         // Construir mapas usando el método genérico buildMap
         Map<Usuario, List<Habilidade>> usuarioHabilidadesMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getHabilidades);
         Map<Usuario, List<SubCategoria>> usuarioSubCategoriasMap = buildMap(lstUsuario, UsuarioHabilidadesCategoriasDTO::getUsuario, UsuarioHabilidadesCategoriasDTO::getSub_categoria);
@@ -36,7 +36,7 @@ public class UsuarioInfoBuilder {
             infolst.add(new UsuarioInfoDto(usuarioDTO, habilidades, subCategorias));
         }
         // Crear un objeto Page a partir de la lista infolst y el objeto pageable
-        return new PageImpl<>(infolst, pageable, infolst.size());
+        return infolst;
     }
 
     // Método genérico para construir mapas

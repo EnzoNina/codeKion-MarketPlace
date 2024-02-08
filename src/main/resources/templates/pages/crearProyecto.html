@@ -22,9 +22,11 @@
         <div class="mb-3">
             <label for="estadoProyecto" class="form-label">Estado del proyecto</label>
             <select class="form-control" id="estadoProyecto" th:field="*{estadoProyecto}" required>
-                <option value="En desarrollo">En desarrollo</option>
-                <option value="Finalizado">Finalizado</option>
-                <option value="Cancelado">Cancelado</option>
+                <option value="active">active</option>
+                <option value="active_but_seasonal">active_but_seasonal</option>
+                <option value="complete">complete</option>
+                <option value="hiatus">hiatus</option>
+                <option value="pending">pending</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Crear proyecto</button>

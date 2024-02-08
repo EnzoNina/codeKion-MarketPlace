@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<div th:replace="~{fragments/head :: head}">
+</div>
+<script th:src="@{/js/getProjectList.js}"></script>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="container mt-5">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error!</h4>
+            <p th:text="${error}"></p>
+            <hr>
+            <p class="mb-0">Por favor, regrese a la <a th:href="@{/home}">página principal</a>.</p>
+        </div>
+    </div>
+</main>
+<div th:insert="~{fragments/scripts :: footer}"></div>
+</body>
+</html>

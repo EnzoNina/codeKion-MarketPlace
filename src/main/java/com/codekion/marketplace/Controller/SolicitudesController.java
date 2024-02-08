@@ -7,11 +7,14 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/notificaciones")
+@RequestMapping("/solicitudes")
 public class SolicitudesController {
     @Autowired
     private ISolicitudColaboradoresService solicitudColaboracionService;
@@ -34,22 +37,39 @@ public class SolicitudesController {
     }
 
     @PostMapping("/enviarSolicitud")
-    public String enviarSolicitudColaboracion(@RequestParam("userId") Integer userId, @RequestParam("proyecto") Proyecto proyecto, Model model) {
-        Usuario usuario = usuarioService.findById(userId);
-        List<Proyecto> lstProyectos = proyectosService.findByColaboradoresAndIdUsuario(usuario.getId());
-        if (lstProyectos.isEmpty()) {
-            // Envía una notificación a través de WebSocket
-            try {
-                solicitudColaboracionService.save(new SolicitudesColaboradore(proyecto, usuario, false));
-            } catch (DataAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        if (lstProyectos.contains(proyecto)) {
-            //Retornar a la vista con un mensaje de que el usuario ya esta en el proyecto
-            model.addAttribute("error", "El usuario ya esta en el proyecto");
-        }
+    public String enviarSolicitudColaboracion(@RequestParam("userId") Integer userId
+            , @RequestParam("proyecto") Proyecto proyecto
+            , RedirectAttributes redirectAttributes) {
+        Optional<Usuario> usuarioOptional = usuarioService.findById(userId);
 
+        try {
+            Usuario usuario = usuarioOptional.orElseThrow(NullPointerException::new);
+            List<Proyecto> lstProyectos = proyectosService.findByColaboradoresAndIdUsuario(usuario.getId());
+            //Obtener las solicitudes del usuario
+            List<SolicitudesColaboradore> lstSolicitudesColaboradores = solicitudColaboracionService.findByIdUsuarioAndEstadoSolicitud(usuario);
+            //Verificamos si la solicitud ya se encuentra en la base de datos
+            Boolean solicitudEnviada = lstSolicitudesColaboradores.stream().anyMatch(solicitud -> solicitud.getIdProyecto().getId().equals(proyecto.getId()));
+            //Verificar Si el proyecto ya fue aceptado por el usuario
+            if (lstProyectos.contains(proyecto)) {
+                redirectAttributes.addFlashAttribute("error", "El usuario ya esta en el proyecto");
+                return "redirect:/BuscarcolaboradoresPage";
+            }
+            //Verificar si el usuario ya envió una solicitud
+            if (!solicitudEnviada) {
+                try {
+                    solicitudColaboracionService.save(new SolicitudesColaboradore(proyecto, usuario, false));
+                } catch (DataAccessException e) {
+                    redirectAttributes.addFlashAttribute("error", "Error al enviar la solicitud: " + e.getMessage());
+                    return "pages/errorPage";
+
+                }
+            } else {
+                redirectAttributes.addFlashAttribute("error", "El usuario ya tiene una solicitud enviada para este proyecto");
+            }
+        } catch (NullPointerException e) {
+            redirectAttributes.addFlashAttribute("error", "Error al enviar la solicitud: " + e.getMessage());
+            return "redirect:/login";
+        }
         return "redirect:/BuscarcolaboradoresPage";
     }
 
@@ -76,7 +96,7 @@ public class SolicitudesController {
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
-        return "redirect:/notificaciones/mostrar";
+        return "redirect:/solicitudes/mostrar";
     }
 
     //Obtenemos el colaborador o lo creamos si no existe

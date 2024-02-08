@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IUsuarioImpl implements IUsuarioService {
@@ -49,8 +50,8 @@ public class IUsuarioImpl implements IUsuarioService {
     }
 
     @Override
-    public Usuario findById(Integer id) {
-        return usuarioDao.findById(id).orElse(null);
+    public Optional findById(Integer id) {
+        return usuarioDao.findById(id);
     }
 
     @Override
@@ -58,7 +59,6 @@ public class IUsuarioImpl implements IUsuarioService {
         return usuarioDao.findByUser(user);
     }
 
-    @Override
     public List<UsuarioHabilidadesCategoriasDTO> buscarUsuariosYHabilidades() {
         return usuarioDao.buscarUsuariosYHabilidades();
     }

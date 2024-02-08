@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioService extends UserDetailsService {
 
@@ -16,7 +17,7 @@ public interface IUsuarioService extends UserDetailsService {
 
     public Usuario save(Usuario usuario);
 
-    public Usuario findById(Integer id);
+    public Optional findById(Integer id);
 
     Usuario findByUser(String user);
 
